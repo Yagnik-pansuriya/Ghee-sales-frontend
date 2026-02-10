@@ -10,11 +10,11 @@ const Navbar = ({ scrolled, onOpenCart }) => {
             transition: 'all 0.4s var(--easing)'
         }}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                {/* <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--primary)', letterSpacing: '-1px', cursor: 'pointer' }}>
+                <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--primary)', letterSpacing: '-1px', cursor: 'pointer' }}>
                     ROSIER <span style={{ color: 'var(--secondary)' }}>FOODS</span>
-                </div> */}
+                </div>
 
-                {/* <div style={{ display: 'flex', gap: '3rem', fontWeight: 500, alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: '3rem', fontWeight: 500, alignItems: 'center' }}>
                     <a href="#shop" style={{ color: 'var(--text-main)' }}>Shop</a>
                     <a href="#story" style={{ color: 'var(--text-main)' }}>Story</a>
                     <a href="#benefits" style={{ color: 'var(--text-main)' }}>Benefits</a>
@@ -44,7 +44,7 @@ const Navbar = ({ scrolled, onOpenCart }) => {
                             fontWeight: 700
                         }}>0</span>
                     </button>
-                </div> */}
+                </div>
             </div>
         </header>
         // <></>
