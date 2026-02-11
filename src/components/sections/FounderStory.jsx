@@ -30,9 +30,10 @@ const FounderStory = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
+                    className="text-center md:text-left"
                 >
                     <span className="text-secondary font-bold tracking-[0.2em] uppercase text-sm mb-4 block">The Heart of our Brand</span>
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8 text-primary leading-tight">A Journey Back to Roots</h2>
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-primary leading-tight">A Journey Back to Roots</h2>
                     <div className="space-y-6 text-text-muted text-lg leading-relaxed">
                         <p>
                             It started with a simple realization: the ghee and honey our grandparents consumed was vastly different from what we find on supermarket shelves today. The soul of traditional nourishment was missing.

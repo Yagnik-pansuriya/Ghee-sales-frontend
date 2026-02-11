@@ -7,7 +7,7 @@ const About = () => {
     return (
         <div className="pt-20">
             {/* Header */}
-            <section className="relative h-[60vh] flex items-center justify-center text-white text-center">
+            <section className="relative h-[40vh] md:h-[60vh] flex items-center justify-center text-white text-center">
                 <div className="absolute inset-0">
                     <img
                         src="/images/hero/about-hero.jpg"
@@ -38,9 +38,9 @@ const About = () => {
 
             {/* Mission */}
             <SectionWrapper>
-                <div className="grid md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8 text-primary">Our Philosophy</h2>
+                <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+                    <div className="text-center md:text-left">
+                        <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-primary">Our Philosophy</h2>
                         <p className="text-lg text-text-muted leading-relaxed mb-8">
                             At Ghee & Honey, we believe that food is not just sustenance; it's a sacred offering to the body. Every jar we fill is a testament to our commitment to quality, tradition, and transparency.
                         </p>

@@ -4,10 +4,13 @@ import SectionWrapper from '../layout/SectionWrapper';
 import Button from '../common/Button';
 import { motion } from 'framer-motion';
 import { FiShoppingBag, FiEye } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../redux/cartSlice';
 
 import { getFeaturedProducts } from '../../data/products';
 
 const ProductShowcase = () => {
+    const dispatch = useDispatch();
     const featuredProducts = getFeaturedProducts().slice(0, 4);
 
     return (
@@ -53,7 +56,11 @@ const ProductShowcase = () => {
                                 <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300 shadow-lg" title="Quick View">
                                     <FiEye size={20} />
                                 </button>
-                                <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75 shadow-lg" title="Add to Cart">
+                                <button
+                                    onClick={() => dispatch(addItem(product))}
+                                    className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75 shadow-lg"
+                                    title="Add to Cart"
+                                >
                                     <FiShoppingBag size={20} />
                                 </button>
                             </div>
@@ -66,7 +73,10 @@ const ProductShowcase = () => {
                             </h3>
                             <div className="flex items-center justify-center sm:justify-between px-2 sm:px-0">
                                 <span className="text-xl font-bold text-primary-dark">₹{product.price}</span>
-                                <button className="hidden sm:flex text-sm font-bold text-primary underline decoration-secondary decoration-2 underline-offset-4 hover:text-secondary transition-colors">
+                                <button
+                                    onClick={() => dispatch(addItem(product))}
+                                    className="hidden sm:flex text-sm font-bold text-primary underline decoration-secondary decoration-2 underline-offset-4 hover:text-secondary transition-colors"
+                                >
                                     Buy Now
                                 </button>
                             </div>

@@ -18,6 +18,7 @@ import Certifications from './pages/Certifications';
 
 // Components
 import SEO from './components/common/SEO';
+import CartDrawer from './components/layout/CartDrawer';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             description="Shop the finest A2 Gir Cow Ghee and Raw Organic Honey. 100% Pure, Lab Tested, and Traditional."
           />
           <Navbar />
+          <CartDrawer />
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />

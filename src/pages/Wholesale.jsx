@@ -18,8 +18,8 @@ const Wholesale = () => {
             <div className="bg-primary text-white py-20 text-center">
                 <div className="container mx-auto px-4">
                     <span className="text-secondary font-bold tracking-[0.2em] uppercase text-sm block mb-4">Partner With Us</span>
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">Wholesale & B2B Inquiries</h1>
-                    <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+                    <h1 className="text-3xl md:text-6xl font-serif font-bold mb-6 px-4">Wholesale & B2B Inquiries</h1>
+                    <p className="text-base md:text-xl text-white/80 max-w-2xl mx-auto px-4">
                         Bring the purity of Ghee & Honey to your customers. We supply to hotels, restaurants, and retail chains across India.
                     </p>
                 </div>

@@ -3,10 +3,13 @@ import SectionWrapper from '../components/layout/SectionWrapper';
 import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
 import { motion } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../redux/cartSlice';
 
 import { products as allProducts } from '../data/products';
 
 const Products = () => {
+    const dispatch = useDispatch();
     const [filter, setFilter] = useState('All');
 
     const filteredProducts = filter === 'All'
@@ -66,7 +69,12 @@ const Products = () => {
                                 </h3>
                                 <div className="flex items-center justify-between mt-4">
                                     <span className="text-xl font-bold text-primary">₹{product.price}</span>
-                                    <Button size="sm">Add</Button>
+                                    <Button
+                                        size="sm"
+                                        onClick={() => dispatch(addItem(product))}
+                                    >
+                                        Add
+                                    </Button>
                                 </div>
                             </div>
                         </motion.div>

@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { FiShoppingBag, FiSearch, FiPhone } from 'react-icons/fi';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleCart } from '../../redux/cartSlice';
 import Logo from '../common/Logo';
 import Button from '../common/Button';
 import clsx from 'clsx';
@@ -11,6 +13,10 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
+
+    const dispatch = useDispatch();
+    const { items } = useSelector((state) => state.cart);
+    const cartCount = items.reduce((total, item) => total + item.quantity, 0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -78,14 +84,19 @@ const Navbar = () => {
                         )}>
                             <FiSearch size={22} />
                         </button>
-                        <button className={clsx(
-                            "transition-colors hover:scale-110 duration-200 relative",
-                            isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
-                        )}>
+                        <button
+                            onClick={() => dispatch(toggleCart())}
+                            className={clsx(
+                                "transition-colors hover:scale-110 duration-200 relative",
+                                isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
+                            )}
+                        >
                             <FiShoppingBag size={22} />
-                            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] text-white font-bold">
-                                2
-                            </span>
+                            {cartCount > 0 && (
+                                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] text-white font-bold">
+                                    {cartCount}
+                                </span>
+                            )}
                         </button>
                         <Button
                             size="sm"
@@ -164,9 +175,22 @@ const Navbar = () => {
                                         <FiSearch size={22} />
                                         <span className="text-xs uppercase tracking-wider">Search</span>
                                     </div>
-                                    <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors">
-                                        <FiShoppingBag size={22} />
-                                        <span className="text-xs uppercase tracking-wider">Cart (2)</span>
+                                    <div
+                                        onClick={() => {
+                                            setIsMobileMenuOpen(false);
+                                            dispatch(toggleCart());
+                                        }}
+                                        className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors"
+                                    >
+                                        <div className="relative">
+                                            <FiShoppingBag size={22} />
+                                            {cartCount > 0 && (
+                                                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-secondary text-[8px] text-white font-bold">
+                                                    {cartCount}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <span className="text-xs uppercase tracking-wider">Cart</span>
                                     </div>
                                     <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors">
                                         <FiPhone size={22} />

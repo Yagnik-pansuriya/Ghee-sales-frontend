@@ -47,8 +47,8 @@ const Hero = () => {
                         100% Organic • Ethical • Pure
                     </span>
 
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-xl">
-                        Nature’s Golden <br className="hidden md:block" />
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-xl">
+                        Nature’s Golden <br className="hidden sm:block" />
                         <span className="text-stone-100 italic">Liquid Gold</span>
                     </h1>
 

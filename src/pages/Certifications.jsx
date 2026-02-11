@@ -46,12 +46,12 @@ const certs = [
 const Certifications = () => {
     return (
         <div className="pt-20 lg:pt-32">
-            <div className="bg-cream/30 py-24 text-center">
-                <div className="container mx-auto px-4">
-                    <span className="text-secondary font-bold tracking-[0.25em] h-px w-12 bg-secondary inline-block align-middle mr-4"></span>
-                    <span className="text-secondary font-bold tracking-[0.25em] uppercase text-sm inline-block">Quality Standards</span>
-                    <h1 className="text-5xl md:text-7xl font-serif font-bold mt-6 mb-8 text-primary">Certified Purity</h1>
-                    <p className="text-xl text-text-muted max-w-2xl mx-auto leading-relaxed">
+            {/* Hero Section */}
+            <div className="bg-primary text-white py-20 lg:py-32 relative overflow-hidden">
+                <div className="container mx-auto px-4 relative z-10 text-center">
+                    <span className="text-secondary font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Quality First</span>
+                    <h1 className="text-4xl md:text-7xl font-serif font-bold mb-6">Our Certifications</h1>
+                    <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
                         Our commitment to excellence is verified by independent labs and international safety standards.
                     </p>
                 </div>
