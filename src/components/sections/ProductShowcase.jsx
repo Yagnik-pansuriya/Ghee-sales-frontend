@@ -10,7 +10,7 @@ const products = [
         id: 1,
         name: "A2 Gir Cow Ghee",
         price: "₹1,499",
-        image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&q=80&w=800",
+        image: "/images/products/ghee-1.jpg",
         tag: "Bestseller",
         desc: "Traditional Bilona method"
     },
@@ -18,7 +18,7 @@ const products = [
         id: 2,
         name: "Raw Forest Honey",
         price: "₹850",
-        image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=800",
+        image: "/images/products/honey-1.jpg",
         tag: "New",
         desc: "Unprocessed & Wild"
     },
@@ -26,14 +26,14 @@ const products = [
         id: 3,
         name: "Spiced Turmeric Ghee",
         price: "₹950",
-        image: "https://images.unsplash.com/photo-1620610996147-32128b9d4c2b?auto=format&fit=crop&q=80&w=800",
+        image: "/images/products/ghee-2.jpg",
         desc: "Infused with curcumin"
     },
     {
         id: 4,
         name: "Wildflower Honey",
         price: "₹650",
-        image: "https://images.unsplash.com/photo-1587049352847-81a45d05c3d9?auto=format&fit=crop&q=80&w=800",
+        image: "/images/products/honey-2.jpg",
         desc: "Multi-floral nectar"
     }
 ];

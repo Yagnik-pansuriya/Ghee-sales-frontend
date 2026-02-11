@@ -3,10 +3,10 @@ import SectionWrapper from '../layout/SectionWrapper';
 import { motion } from 'framer-motion';
 
 const certs = [
-    { name: "FSSAI Certified", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/FSSAI_logo.svg/1200px-FSSAI_logo.svg.png" }, // Placeholder logos, replace with local assets in prod
-    { name: "India Organic", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/India_Organic_logo.svg/1200px-India_Organic_logo.svg.png" },
-    { name: "Jaivik Bharat", icon: "https://jaivikbharat.fssai.gov.in/images/logo.png" },
-    { name: "ISO 9001:2015", icon: "https://seeklogo.com/images/I/iso-9001-logo-226694827C-seeklogo.com.png" }
+    { name: "FSSAI Certified", icon: "/images/certs/fssai.png" }, // Placeholder logos, replace with local assets in prod
+    { name: "India Organic", icon: "/images/certs/organic-india.png" },
+    { name: "Jaivik Bharat", icon: "/images/certs/jaivik.png" },
+    { name: "ISO 9001:2015", icon: "/images/certs/iso.png" }
 ];
 
 const Certifications = () => {
@@ -38,7 +38,7 @@ const Certifications = () => {
                 <div className="relative">
                     <div className="absolute inset-0 bg-secondary/10 rounded-full blur-3xl transform translate-x-4 translate-y-4"></div>
                     <img
-                        src="https://images.unsplash.com/photo-1579113800032-c38bd1d994ff?auto=format&fit=crop&q=80&w=800"
+                        src="/images/certs/lab-test.jpg"
                         alt="Lab Testing"
                         className="relative z-10 rounded-2xl shadow-card max-w-sm w-full object-cover aspect-square"
                     />

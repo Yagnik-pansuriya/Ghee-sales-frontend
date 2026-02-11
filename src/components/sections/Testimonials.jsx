@@ -10,7 +10,7 @@ const testimonials = [
         location: "Mumbai",
         text: "I've tried many organic brands, but the aroma of this Bilona Ghee takes me back to my grandmother's kitchen. Absolutely authentic!",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200"
+        image: "/images/testimonials/user-1.jpg"
     },
     {
         id: 2,
@@ -18,7 +18,7 @@ const testimonials = [
         location: "Delhi",
         text: "The raw honey is incredible. You can actually taste the wildflowers. It's now a staple in my morning routine.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
+        image: "/images/testimonials/user-2.jpg"
     },
     {
         id: 3,
@@ -26,7 +26,7 @@ const testimonials = [
         location: "Bangalore",
         text: "Fast delivery and beautiful packaging. I bought it as a gift for my parents, and they loved the quality.",
         rating: 5,
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200"
+        image: "/images/testimonials/user-3.jpg"
     }
 ];
 
