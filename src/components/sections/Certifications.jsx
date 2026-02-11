@@ -30,7 +30,7 @@ const ISOLogo = () => (
 );
 
 const certs = [
-    { name: "FSSAI Certified", Logo: FSSAILogo },
+    { name: "FSSAI Certified", image: "/images/certs/fssai.png" },
     { name: "India Organic", Logo: IndiaOrganicLogo },
     { name: "ISO 9001:2015", Logo: ISOLogo }
 ];
@@ -55,7 +55,11 @@ const Certifications = () => {
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: idx * 0.1 }}
                             >
-                                <cert.Logo />
+                                {cert.image ? (
+                                    <img src={cert.image} alt={cert.name} className="h-full object-contain" />
+                                ) : (
+                                    <cert.Logo />
+                                )}
                             </motion.div>
                         ))}
                     </div>

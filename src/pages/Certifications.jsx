@@ -36,7 +36,7 @@ const certs = [
         id: "1001234567890",
         desc: "Licensed by the Food Safety and Standards Authority of India.",
         color: "bg-green-50/50",
-        Logo: FSSAILogo
+        image: "/images/certs/fssai.png"
     },
     {
         title: "NPOP Organic",
@@ -80,7 +80,11 @@ const Certifications = () => {
                             className={`p-12 rounded-[2.5rem] border border-stone-100 text-center ${cert.color} hover:shadow-xl hover:shadow-stone-200/50 hover:-translate-y-2 transition-all duration-500`}
                         >
                             <div className="w-32 h-32 mx-auto bg-white rounded-full flex items-center justify-center shadow-soft mb-8 p-6 group">
-                                <cert.Logo />
+                                {cert.image ? (
+                                    <img src={cert.image} alt={cert.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
+                                ) : (
+                                    <cert.Logo />
+                                )}
                             </div>
                             <h3 className="font-serif font-bold text-3xl mb-3 text-primary">{cert.title}</h3>
                             <p className="font-sans font-bold text-xs text-secondary/60 mb-6 tracking-[0.2em] uppercase">{cert.id}</p>
