@@ -97,10 +97,16 @@ const Footer = () => {
                     <div className="lg:col-span-4">
                         <h4 className="font-serif text-xl mb-8 text-secondary">Stay Connected</h4>
                         <p className="text-white/70 mb-6">Join our community for exclusive access to harvest updates and wellness tips.</p>
-                        <form className="flex flex-col gap-4">
+
+                        {/* Status Message (Mock logic) */}
+                        <form className="flex flex-col gap-4" onSubmit={(e) => {
+                            e.preventDefault();
+                            alert("Thank you for subscribing! Check your inbox soon.");
+                        }}>
                             <div className="relative">
                                 <input
                                     type="email"
+                                    required
                                     placeholder="Your email address"
                                     className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-secondary text-white placeholder:text-white/30 transition-colors"
                                 />

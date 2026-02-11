@@ -4,14 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
 import { motion } from 'framer-motion';
 
-const allProducts = [
-    { id: 1, name: "A2 Gir Cow Ghee", price: "₹1,499", category: "Ghee", image: "/images/products/ghee-1.jpg" },
-    { id: 2, name: "Raw Forest Honey", price: "₹850", category: "Honey", image: "/images/products/honey-1.jpg" },
-    { id: 3, name: "Spiced Turmeric Ghee", price: "₹950", category: "Ghee", image: "/images/products/ghee-2.jpg" },
-    { id: 4, name: "Wildflower Honey", price: "₹650", category: "Honey", image: "/images/products/honey-2.jpg" },
-    { id: 5, name: "Buffalo Ghee", price: "₹1,100", category: "Ghee", image: "/images/products/ghee-3.jpg" },
-    { id: 6, name: "Mustard Honey", price: "₹550", category: "Honey", image: "/images/products/honey-3.jpg" },
-];
+import { products as allProducts } from '../data/products';
 
 const Products = () => {
     const [filter, setFilter] = useState('All');
@@ -72,7 +65,7 @@ const Products = () => {
                                     <Link to={`/products/${product.id}`}>{product.name}</Link>
                                 </h3>
                                 <div className="flex items-center justify-between mt-4">
-                                    <span className="text-xl font-bold text-primary">{product.price}</span>
+                                    <span className="text-xl font-bold text-primary">₹{product.price}</span>
                                     <Button size="sm">Add</Button>
                                 </div>
                             </div>

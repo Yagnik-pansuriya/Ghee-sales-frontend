@@ -5,11 +5,19 @@ import Button from '../components/common/Button';
 import { FiMapPin, FiPhone, FiMail } from 'react-icons/fi';
 
 const Contact = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [isSuccess, setIsSuccess] = React.useState(false);
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        setIsSubmitting(true);
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
         console.log("Form Data:", data);
-        alert("Thank you for your message! We will get back to you soon.");
+        setIsSubmitting(false);
+        setIsSuccess(true);
+        reset();
+        setTimeout(() => setIsSuccess(false), 5000);
     };
 
     return (
@@ -106,7 +114,23 @@ const Contact = () => {
                                 {errors.message && <span className="text-red-500 text-xs mt-1">Message is required</span>}
                             </div>
 
-                            <Button type="submit" className="w-full">Send Message</Button>
+                            <Button
+                                type="submit"
+                                className="w-full"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? "Sending..." : "Send Message"}
+                            </Button>
+
+                            {isSuccess && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="p-4 bg-green-50 text-green-700 rounded-xl text-center font-bold"
+                                >
+                                    Message sent successfully! We'll get back to you soon.
+                                </motion.div>
+                            )}
                         </form>
                     </div>
                 </div>

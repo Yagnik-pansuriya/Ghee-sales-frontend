@@ -5,40 +5,11 @@ import Button from '../common/Button';
 import { motion } from 'framer-motion';
 import { FiShoppingBag, FiEye } from 'react-icons/fi';
 
-const products = [
-    {
-        id: 1,
-        name: "A2 Gir Cow Ghee",
-        price: "₹1,499",
-        image: "/images/products/ghee-1.jpg",
-        tag: "Bestseller",
-        desc: "Traditional Bilona method"
-    },
-    {
-        id: 2,
-        name: "Raw Forest Honey",
-        price: "₹850",
-        image: "/images/products/honey-1.jpg",
-        tag: "New",
-        desc: "Unprocessed & Wild"
-    },
-    {
-        id: 3,
-        name: "Spiced Turmeric Ghee",
-        price: "₹950",
-        image: "/images/products/ghee-2.jpg",
-        desc: "Infused with curcumin"
-    },
-    {
-        id: 4,
-        name: "Wildflower Honey",
-        price: "₹650",
-        image: "/images/products/honey-2.jpg",
-        desc: "Multi-floral nectar"
-    }
-];
+import { getFeaturedProducts } from '../../data/products';
 
 const ProductShowcase = () => {
+    const featuredProducts = getFeaturedProducts().slice(0, 4);
+
     return (
         <SectionWrapper bgColor="bg-cream">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -46,13 +17,13 @@ const ProductShowcase = () => {
                     <span className="text-secondary font-bold tracking-widest uppercase text-sm animate-fade-in-up">Shop Favorites</span>
                     <h2 className="text-4xl md:text-5xl mt-3 font-serif text-primary">Curated for Wellness</h2>
                 </div>
-                <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
+                <Button as={Link} to="/products" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
                     View All Products
                 </Button>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {products.map((product, idx) => (
+                {featuredProducts.map((product, idx) => (
                     <motion.div
                         key={product.id}
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -94,7 +65,7 @@ const ProductShowcase = () => {
                                 <Link to={`/products/${product.id}`}>{product.name}</Link>
                             </h3>
                             <div className="flex items-center justify-center sm:justify-between px-2 sm:px-0">
-                                <span className="text-xl font-bold text-primary-dark">{product.price}</span>
+                                <span className="text-xl font-bold text-primary-dark">₹{product.price}</span>
                                 <button className="hidden sm:flex text-sm font-bold text-primary underline decoration-secondary decoration-2 underline-offset-4 hover:text-secondary transition-colors">
                                     Buy Now
                                 </button>

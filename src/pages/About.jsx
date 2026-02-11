@@ -1,6 +1,7 @@
 import React from 'react';
 import SectionWrapper from '../components/layout/SectionWrapper';
 import { motion } from 'framer-motion';
+import FounderStory from '../components/sections/FounderStory';
 
 const About = () => {
     return (
@@ -31,6 +32,9 @@ const About = () => {
                     </motion.div>
                 </div>
             </section>
+
+            {/* Founder Story Section */}
+            <FounderStory />
 
             {/* Mission */}
             <SectionWrapper>
