@@ -12,24 +12,6 @@ const FSSAILogo = () => (
     </svg>
 );
 
-const IndiaOrganicLogo = () => (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-        <circle cx="50" cy="50" r="45" fill="none" stroke="#2e7d32" strokeWidth="2" />
-        <path d="M30 50 Q50 20 70 50 Q50 80 30 50" fill="#2e7d32" opacity="0.1" />
-        <text x="50" y="55" textAnchor="middle" className="text-[12px] font-bold fill-[#1b5e20]">INDIA</text>
-        <text x="50" y="70" textAnchor="middle" className="text-[10px] font-bold fill-[#1b5e20]">ORGANIC</text>
-        <path d="M40 35 L60 35 M50 25 L50 45" stroke="#f57c00" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-);
-
-const ISOLogo = () => (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-        <rect x="10" y="10" width="80" height="80" rx="10" fill="#0d47a1" />
-        <text x="50" y="45" textAnchor="middle" className="fill-white font-bold text-[24px]">ISO</text>
-        <text x="50" y="75" textAnchor="middle" className="fill-white font-medium text-[16px]">22000</text>
-    </svg>
-);
-
 const certs = [
     {
         title: "FSSAI",
@@ -43,14 +25,14 @@ const certs = [
         id: "ORG-002345",
         desc: "Certified Organic under the National Programme for Organic Production.",
         color: "bg-orange-50/50",
-        Logo: IndiaOrganicLogo
+        image: "/images/certs/organic.png"
     },
     {
         title: "ISO 22000",
         id: "ISO-CERT-9988",
         desc: "International standard for food safety management systems.",
         color: "bg-blue-50/50",
-        Logo: ISOLogo
+        image: "/images/certs/iso.png"
     }
 ];
 
@@ -80,11 +62,7 @@ const Certifications = () => {
                             className={`p-12 rounded-[2.5rem] border border-stone-100 text-center ${cert.color} hover:shadow-xl hover:shadow-stone-200/50 hover:-translate-y-2 transition-all duration-500`}
                         >
                             <div className="w-32 h-32 mx-auto bg-white rounded-full flex items-center justify-center shadow-soft mb-8 p-6 group">
-                                {cert.image ? (
-                                    <img src={cert.image} alt={cert.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
-                                ) : (
-                                    <cert.Logo />
-                                )}
+                                <img src={cert.image} alt={cert.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300" />
                             </div>
                             <h3 className="font-serif font-bold text-3xl mb-3 text-primary">{cert.title}</h3>
                             <p className="font-sans font-bold text-xs text-secondary/60 mb-6 tracking-[0.2em] uppercase">{cert.id}</p>

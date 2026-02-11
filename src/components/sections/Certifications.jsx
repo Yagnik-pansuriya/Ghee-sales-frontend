@@ -12,27 +12,10 @@ const FSSAILogo = () => (
     </svg>
 );
 
-const IndiaOrganicLogo = () => (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-        <circle cx="50" cy="50" r="45" fill="none" stroke="#2e7d32" strokeWidth="2" />
-        <path d="M30 50 Q50 20 70 50 Q50 80 30 50" fill="#2e7d32" opacity="0.1" />
-        <text x="50" y="55" textAnchor="middle" className="text-[12px] font-bold fill-[#1b5e20]">INDIA</text>
-        <text x="50" y="70" textAnchor="middle" className="text-[10px] font-bold fill-[#1b5e20]">ORGANIC</text>
-    </svg>
-);
-
-const ISOLogo = () => (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-        <rect x="10" y="10" width="80" height="80" rx="10" fill="#0d47a1" />
-        <text x="50" y="45" textAnchor="middle" className="fill-white font-bold text-[24px]">ISO</text>
-        <text x="50" y="75" textAnchor="middle" className="fill-white font-medium text-[16px]">9001</text>
-    </svg>
-);
-
 const certs = [
     { name: "FSSAI Certified", image: "/images/certs/fssai.png" },
-    { name: "India Organic", Logo: IndiaOrganicLogo },
-    { name: "ISO 9001:2015", Logo: ISOLogo }
+    { name: "India Organic", image: "/images/certs/organic.png" },
+    { name: "ISO 9001:2015", image: "/images/certs/iso.png" }
 ];
 
 const Certifications = () => {
@@ -55,11 +38,7 @@ const Certifications = () => {
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: idx * 0.1 }}
                             >
-                                {cert.image ? (
-                                    <img src={cert.image} alt={cert.name} className="h-full object-contain" />
-                                ) : (
-                                    <cert.Logo />
-                                )}
+                                <img src={cert.image} alt={cert.name} className="h-full object-contain" />
                             </motion.div>
                         ))}
                     </div>
