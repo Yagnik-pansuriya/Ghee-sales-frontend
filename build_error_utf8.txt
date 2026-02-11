@@ -1,0 +1,117 @@
+﻿
+> temp-vite@0.0.0 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 484 modules transformed.
+node.exe : [31mx[39m 
+Build failed in 3.87s
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (  
+  [31mx[39m Build fail   
+ ed in 3.87s:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+[31merror during build:
+[31msrc/components/sectio
+ns/WhyChooseUs.jsx 
+(4:23): "GiBeetle" is not 
+exported by "node_modules/
+react-icons/gi/index.mjs",
+ imported by "src/componen
+ts/sections/WhyChooseUs.js
+x".[31m
+file: [36mC:/Users/mvatsa
+l/Desktop/Ghee-sales-front
+end/src/components/section
+s/WhyChooseUs.jsx:4:23[31
+m
+[33m
+2: import SectionWrapper 
+from '../layout/SectionWra
+pper';
+3: import { motion } from 
+'framer-motion';
+4: import { GiMilkCarton, 
+GiBeetle, GiTestTubes, 
+GiFarmTractor } from 
+'react-icons/gi';
+                          
+^
+5: 
+6: const features = [
+[31m
+    at getRollupError (fil
+e:///C:/Users/mvatsal/Desk
+top/Ghee-sales-frontend/no
+de_modules/rollup/dist/es/
+shared/parseAst.js:402:41)
+    at error (file:///C:/U
+sers/mvatsal/Desktop/Ghee-
+sales-frontend/node_module
+s/rollup/dist/es/shared/pa
+rseAst.js:398:42)
+    at Module.error (file:
+///C:/Users/mvatsal/Deskto
+p/Ghee-sales-frontend/node
+_modules/rollup/dist/es/sh
+ared/node-entry.js:17040:1
+6)
+    at 
+Module.traceVariable (file
+:///C:/Users/mvatsal/Deskt
+op/Ghee-sales-frontend/nod
+e_modules/rollup/dist/es/s
+hared/node-entry.js:17452:
+29)
+    at 
+ModuleScope.findVariable (
+file:///C:/Users/mvatsal/D
+esktop/Ghee-sales-frontend
+/node_modules/rollup/dist/
+es/shared/node-entry.js:15
+070:39)
+    at Identifier.bind (fi
+le:///C:/Users/mvatsal/Des
+ktop/Ghee-sales-frontend/n
+ode_modules/rollup/dist/es
+/shared/node-entry.js:5447
+:40)
+    at Property.bind (file
+:///C:/Users/mvatsal/Deskt
+op/Ghee-sales-frontend/nod
+e_modules/rollup/dist/es/s
+hared/node-entry.js:2829:2
+3)
+    at 
+ObjectExpression.bind (fil
+e:///C:/Users/mvatsal/Desk
+top/Ghee-sales-frontend/no
+de_modules/rollup/dist/es/
+shared/node-entry.js:2825:
+28)
+    at 
+ArrayExpression.bind (file
+:///C:/Users/mvatsal/Deskt
+op/Ghee-sales-frontend/nod
+e_modules/rollup/dist/es/s
+hared/node-entry.js:2825:2
+8)
+    at 
+VariableDeclarator.bind (f
+ile:///C:/Users/mvatsal/De
+sktop/Ghee-sales-frontend/
+node_modules/rollup/dist/e
+s/shared/node-entry.js:282
+9:23)[39m

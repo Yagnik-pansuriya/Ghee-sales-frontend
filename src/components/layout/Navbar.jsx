@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
-import { FiShoppingBag, FiSearch } from 'react-icons/fi';
+import { FiShoppingBag, FiSearch, FiPhone } from 'react-icons/fi';
 import Logo from '../common/Logo';
-import clsx from 'clsx';
 import Button from '../common/Button';
+import clsx from 'clsx';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -28,114 +28,153 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Products', path: '/products' },
-        { name: 'Why Us', path: '/#why-us' },
-        { name: 'Wholesale', path: '/#wholesale' },
-        { name: 'Certifications', path: '/#certifications' },
-        { name: 'About Us', path: '/about' },
+        { name: 'Our Story', path: '/about' },
+        { name: 'Wholesale', path: '/wholesale' },
+        { name: 'Certifications', path: '/certifications' },
         { name: 'Contact', path: '/contact' },
     ];
 
     return (
         <>
-            <header
+            <motion.header
+                initial={{ y: -100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5 }}
                 className={clsx(
-                    'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent',
-                    isScrolled ? 'bg-white/80 backdrop-blur-md py-3 shadow-sm border-border/50' : 'bg-transparent py-5'
+                    'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+                    isScrolled
+                        ? 'bg-white/90 backdrop-blur-md py-3 shadow-sm border-b border-border/50'
+                        : 'bg-transparent py-5 lg:py-6'
                 )}
             >
                 <div className="container mx-auto flex items-center justify-between">
-                    <Logo />
+                    <Logo isScrolled={isScrolled} />
 
                     {/* Desktop Nav */}
-                    <nav className="hidden md:flex items-center gap-8">
+                    <nav className="hidden lg:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className="text-text-main hover:text-primary font-medium transition-colors relative group"
+                                className={clsx(
+                                    "font-medium transition-colors relative group text-sm tracking-wide uppercase",
+                                    isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
+                                )}
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full" />
+                                <span className={clsx(
+                                    "absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full",
+                                    isScrolled || location.pathname !== '/' ? 'bg-primary' : 'bg-secondary'
+                                )} />
                             </Link>
                         ))}
                     </nav>
 
                     {/* Icons & CTA */}
-                    <div className="hidden md:flex items-center gap-5">
-                        <button className="text-text-main hover:text-primary transition-colors">
+                    <div className="hidden lg:flex items-center gap-6">
+                        <button className={clsx(
+                            "transition-colors hover:scale-110 duration-200",
+                            isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
+                        )}>
                             <FiSearch size={22} />
                         </button>
-                        <button className="text-text-main hover:text-primary transition-colors relative">
+                        <button className={clsx(
+                            "transition-colors hover:scale-110 duration-200 relative",
+                            isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
+                        )}>
                             <FiShoppingBag size={22} />
-                            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] text-white">
-                                0
+                            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] text-white font-bold">
+                                2
                             </span>
                         </button>
-                        <Button size="sm" variant="primary" className="ml-2">
+                        <Button
+                            size="sm"
+                            variant={isScrolled || location.pathname !== '/' ? 'primary' : 'secondary'}
+                            className="ml-2"
+                        >
                             Shop Now
                         </Button>
                     </div>
 
                     {/* Mobile Toggle */}
                     <button
-                        className="md:hidden text-text-main hover:text-primary transition-colors"
+                        className={clsx(
+                            "lg:hidden transition-colors p-2",
+                            isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
+                        )}
                         onClick={() => setIsMobileMenuOpen(true)}
                     >
                         <HiMenuAlt3 size={28} />
                     </button>
                 </div>
-            </header>
+            </motion.header>
 
             {/* Mobile Menu */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, x: '100%' }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: '100%' }}
-                        transition={{ type: 'tween', duration: 0.3 }}
-                        className="fixed inset-0 z-[60] bg-white flex flex-col"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm lg:hidden"
+                        onClick={() => setIsMobileMenuOpen(false)}
                     >
-                        <div className="p-5 flex items-center justify-between border-b border-border/50">
-                            <Logo />
-                            <button
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                className="text-text-main hover:text-primary p-2 bg-cream rounded-full"
-                            >
-                                <HiX size={24} />
-                            </button>
-                        </div>
-
-                        <nav className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
-                            {navLinks.map((link, idx) => (
-                                <motion.div
-                                    key={link.path}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.1 + idx * 0.1 }}
+                        <motion.div
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                            className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-cream shadow-2xl flex flex-col"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <div className="p-6 flex items-center justify-between border-b border-border">
+                                <span className="font-serif text-2xl font-bold text-primary">Menu</span>
+                                <button
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="text-text-muted hover:text-primary p-2 bg-white rounded-full shadow-sm"
                                 >
-                                    <Link
-                                        to={link.path}
-                                        className="text-2xl font-serif font-medium text-text-main hover:text-primary transition-colors"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                </motion.div>
-                            ))}
+                                    <HiX size={24} />
+                                </button>
+                            </div>
 
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 }}
-                                className="flex flex-col gap-4 w-full mt-8"
-                            >
-                                <Button className="w-full">Shop Now</Button>
-                                <div className="flex justify-center gap-6 text-text-muted mt-4">
-                                    <FiSearch size={24} />
-                                    <FiShoppingBag size={24} />
+                            <nav className="flex-1 overflow-y-auto py-6 px-6 flex flex-col gap-6">
+                                {navLinks.map((link, idx) => (
+                                    <motion.div
+                                        key={link.path}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.1 + idx * 0.05 }}
+                                    >
+                                        <Link
+                                            to={link.path}
+                                            className="text-xl font-serif font-medium text-text-main hover:text-primary transition-colors flex items-center justify-between group"
+                                        >
+                                            {link.name}
+                                            <span className="w-8 h-[1px] bg-border group-hover:bg-primary transition-colors" />
+                                        </Link>
+                                    </motion.div>
+                                ))}
+                            </nav>
+
+                            <div className="p-6 border-t border-border bg-white mt-auto">
+                                <Button className="w-full mb-4 shadow-lg">Shop Now</Button>
+                                <div className="flex justify-center gap-8 text-text-muted">
+                                    <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+                                        <FiSearch size={22} />
+                                        <span className="text-xs uppercase tracking-wider">Search</span>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+                                        <FiShoppingBag size={22} />
+                                        <span className="text-xs uppercase tracking-wider">Cart (2)</span>
+                                    </div>
+                                    <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+                                        <FiPhone size={22} />
+                                        <span className="text-xs uppercase tracking-wider">Call</span>
+                                    </div>
                                 </div>
-                            </motion.div>
-                        </nav>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
