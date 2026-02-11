@@ -1,28 +1,18 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import SectionWrapper from '../components/layout/SectionWrapper';
-import Button from '../components/common/Button';
-import { FiCheck, FiShoppingBag, FiStar } from 'react-icons/fi';
+import { getProductById } from '../data/products';
+import { useParams, Link } from 'react-router-dom';
 
 const ProductDetail = () => {
     const { id } = useParams();
+    const product = getProductById(id);
 
-    // Mock Product Data
-    const product = {
-        name: "Desi Cow A2 Ghee",
-        price: "₹1,499",
-        size: "500ml",
-        rating: 4.8,
-        reviews: 124,
-        description: "Our A2 Gir Cow Ghee is made from the milk of free-grazing indigenous cows using the traditional Bilona method. It is hand-churned, nutrient-rich, and easy to digest. Perfect for cooking or as a health supplement.",
-        benefits: [
-            "Boosts immunity naturally",
-            "Improves digestion & gut health",
-            "Good for heart health (Omega-3)",
-            "Enhances memory & brain function"
-        ],
-        image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1887&auto=format&fit=crop"
-    };
+    if (!product) {
+        return (
+            <div className="pt-32 text-center h-screen">
+                <h2 className="text-2xl font-bold">Product not found</h2>
+                <Button as={Link} to="/products" className="mt-4">Back to Shop</Button>
+            </div>
+        );
+    }
 
     return (
         <div className="pt-32 min-h-screen bg-white">
@@ -47,7 +37,7 @@ const ProductDetail = () => {
                         </div>
 
                         <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4 text-primary">{product.name}</h1>
-                        <p className="text-3xl text-primary font-bold mb-8">{product.price} <span className="text-lg text-text-muted font-normal">/ {product.size}</span></p>
+                        <p className="text-3xl text-primary font-bold mb-8">₹{product.price} <span className="text-lg text-text-muted font-normal">/ {product.size || '500ml'}</span></p>
 
                         <p className="text-text-muted text-lg mb-8 leading-relaxed">
                             {product.description}
