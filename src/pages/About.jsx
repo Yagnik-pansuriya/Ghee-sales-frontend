@@ -50,7 +50,7 @@ const About = () => {
                     </div>
                     <div className="rounded-[40px] overflow-hidden hover:shadow-2xl transition-shadow duration-500">
                         <img
-                            src="/images/hero/philosophy.jpg"
+                            src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1200&auto=format&fit=crop"
                             alt="Philosophy"
                             className="w-full h-full object-cover"
                         />

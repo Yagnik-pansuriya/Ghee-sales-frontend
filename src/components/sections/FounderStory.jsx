@@ -15,9 +15,9 @@ const FounderStory = () => {
                 >
                     <div className="absolute -inset-4 bg-secondary/10 rounded-[3rem] blur-2xl transform -rotate-3" />
                     <img
-                        src="/images/about/founder.jpg"
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
                         alt="Our Founder"
-                        className="relative z-10 rounded-[2.5rem] shadow-2xl w-full aspect-[4/5] object-cover"
+                        className="relative z-10 rounded-[2.5rem] shadow-2xl w-full aspect-[4/5] object-contain bg-cream"
                     />
                     <div className="absolute -bottom-8 -right-8 z-20 bg-primary p-8 rounded-2xl shadow-xl text-white hidden lg:block max-w-[240px]">
                         <p className="font-serif italic text-lg mb-2">"Purity isn't just a promise, it's our legacy."</p>

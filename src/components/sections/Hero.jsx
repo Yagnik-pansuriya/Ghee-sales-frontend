@@ -8,7 +8,7 @@ const Hero = () => {
     const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
     // Video background fallback to image if needed
-    const heroImage = "/images/hero/hero-bg.jpg";
+    const heroImage = "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1920&auto=format&fit=crop";
 
     return (
         <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">

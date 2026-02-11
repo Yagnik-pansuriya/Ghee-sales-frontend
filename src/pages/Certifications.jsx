@@ -28,6 +28,13 @@ const certs = [
         image: "/images/certs/organic.png"
     },
     {
+        title: "Quality Lab",
+        id: "LAB-TEST-001", // Added for consistency with other certs
+        image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=1200&auto=format&fit=crop",
+        desc: "Each batch is rigorously tested in certified labs for purity and nutritional value.",
+        color: "bg-stone-50"
+    },
+    {
         title: "ISO 22000",
         id: "ISO-CERT-9988",
         desc: "International standard for food safety management systems.",
