@@ -9,9 +9,9 @@ const Footer = () => {
     const links = {
         shop: [
             { name: 'All Products', path: '/products' },
-            { name: 'A2 Gir Cow Ghee', path: '/products/a2-ghee' },
-            { name: 'Raw Forest Honey', path: '/products/honey' },
-            { name: 'Gift Bundles', path: '/products/bundles' },
+            { name: 'A2 Gir Cow Ghee', path: '/products' },
+            { name: 'Raw Forest Honey', path: '/products' },
+            { name: 'Gift Bundles', path: '/bundle-builder' },
         ],
         company: [
             { name: 'Our Story', path: '/about' },
@@ -47,11 +47,11 @@ const Footer = () => {
                     <div className="lg:col-span-4">
                         <Link to="/" className="inline-block mb-6">
                             <span className="font-serif text-3xl md:text-4xl font-bold tracking-tight text-white">
-                                Rosier<span className="text-secondary">.</span>
+                                Farm Begin<span className="text-secondary">.</span>
                             </span>
                         </Link>
                         <p className="text-white/70 mb-8 max-w-sm leading-relaxed text-lg font-light">
-                            Purveyors of the finest organic A2 Ghee and raw honey. Rooted in tradition, verified by science.
+                            Farm-to-home purity. We bring you the finest organic A2 Ghee and raw honey, untainted and traditional.
                         </p>
                         <div className="flex gap-4">
                             {[FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn].map((Icon, idx) => (
@@ -119,7 +119,7 @@ const Footer = () => {
                 </div>
 
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/40">
-                    <p>&copy; {currentYear} Rosier Foods. All rights reserved.</p>
+                    <p>&copy; {currentYear} Farm Begin. All rights reserved.</p>
                     <div className="flex flex-wrap justify-center gap-8">
                         {links.support.map((link) => (
                             <Link key={link.name} to={link.path} className="hover:text-white transition-colors">

@@ -5,6 +5,7 @@ import Button from '../components/common/Button';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../redux/cartSlice';
+import WishlistButton from '../components/common/WishlistButton';
 
 import { products as allProducts } from '../data/products';
 
@@ -54,14 +55,20 @@ const Products = () => {
                             key={product.id}
                             className="group bg-white rounded-3xl p-6 shadow-sm hover:shadow-card transition-all duration-300"
                         >
-                            <Link to={`/products/${product.id}`} className="block overflow-hidden rounded-2xl mb-6 aspect-square bg-cream relative">
-                                <img
-                                    src={product.image}
-                                    alt={product.name}
-                                    className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
-                                    loading="lazy"
+                            <div className="block overflow-hidden rounded-2xl mb-6 aspect-square bg-cream relative">
+                                <Link to={`/products/${product.id}`}>
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
+                                        loading="lazy"
+                                    />
+                                </Link>
+                                <WishlistButton
+                                    product={product}
+                                    className="absolute top-4 right-4 z-10"
                                 />
-                            </Link>
+                            </div>
                             <div className="text-left">
                                 <span className="text-xs uppercase tracking-widest text-secondary font-bold mb-2 block">{product.category}</span>
                                 <h3 className="font-serif text-2xl font-bold mb-2 group-hover:text-primary transition-colors">

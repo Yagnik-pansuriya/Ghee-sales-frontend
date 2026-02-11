@@ -32,17 +32,17 @@ const FounderStory = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center md:text-left"
                 >
-                    <span className="text-secondary font-bold tracking-[0.2em] uppercase text-sm mb-4 block">The Heart of our Brand</span>
-                    <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-primary leading-tight">A Journey Back to Roots</h2>
+                    <span className="text-secondary font-bold tracking-[0.2em] uppercase text-sm mb-4 block">The Heart of Farm Begin</span>
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-primary leading-tight">Authenticity in Every Drop</h2>
                     <div className="space-y-6 text-text-muted text-lg leading-relaxed">
                         <p>
-                            It started with a simple realization: the ghee and honey our grandparents consumed was vastly different from what we find on supermarket shelves today. The soul of traditional nourishment was missing.
+                            We proudly offer **A2 Gir Cow Ghee** prepared using the traditional **Bilona method**, preserving its natural aroma, high nutritional value, and medicinal benefits. This is real Vedic ghee, exactly as shared by our ancestors.
                         </p>
                         <p>
-                            We spent years traveling to the heartlands, rediscovering the ancient Bilona method and finding bee colonies that feed on wild, untouched forest nectar.
+                            Our **Natural Raw Honey** is 100% unprocessed, unheated, and free from any sugar mix or artificial flavors. Collected naturally from beehives, it retains all enzymes and nutrients as nature intended.
                         </p>
                         <p>
-                            Our mission is simple: to bring that same unadulterated purity back to your table, bridging the gap between ancient wisdom and modern wellness.
+                            Farm Begin stands for trust and honesty. Our vision is simple: to make every home healthier by providing pure food products that you can trust without any doubt.
                         </p>
                     </div>
                 </motion.div>

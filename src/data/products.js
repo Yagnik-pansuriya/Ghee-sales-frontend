@@ -58,6 +58,208 @@ export const products = [
         tag: "Creamy",
         desc: "Unique, naturally creamy honey from the yellow mustard fields.",
         benefits: ["Creamy Texture", "Distinct Flavor", "100% Raw"]
+    },
+    // Additional Ghee
+    {
+        id: 7,
+        name: "Malvi Cow Ghee",
+        price: "1,250",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1596450514735-3b987625841e?q=80&w=800&auto=format&fit=crop",
+        tag: "Traditional",
+        desc: "Exquisite ghee from the Malvi breed of central India.",
+        benefits: ["Traditional Flavor", "High Vitamin A", "Deep Aroma"]
+    },
+    {
+        id: 8,
+        name: "Malnad Gidda Ghee",
+        price: "2,400",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1610444558830-103309a6bebd?q=80&w=800&auto=format&fit=crop",
+        tag: "Rare",
+        desc: "Sourced from the dwarf cows of Western Ghats. Highly medicinal.",
+        benefits: ["Highest Nutrients", "Rare Breed", "Medicinal Grade"]
+    },
+    {
+        id: 9,
+        name: "Vedic Bilona Ghee",
+        price: "1,800",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1615485500624-9548ae4f1f51?q=80&w=800&auto=format&fit=crop",
+        tag: "Ancient",
+        desc: "Prepared using the authentic Vedic curd-churning method.",
+        benefits: ["Gut Friendly", "Ancient Recipe", "Cultured"]
+    },
+    {
+        id: 10,
+        name: "Herb-Infused Ghee",
+        price: "1,150",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=800&auto=format&fit=crop",
+        tag: "Infusion",
+        desc: "A2 Ghee infused with Ashwagandha and Brahmi for mental clarity.",
+        benefits: ["Neuro Protection", "Stress Relief", "Herbal Power"]
+    },
+    {
+        id: 11,
+        name: "Himalayan Cow Ghee",
+        price: "2,100",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?q=80&w=800&auto=format&fit=crop",
+        tag: "Pure",
+        desc: "From cows grazing on high-altitude Himalayan herbs.",
+        benefits: ["Antioxidant Wealth", "Pristine Source", "Unique Flora"]
+    },
+    {
+        id: 12,
+        name: "Hand-Churned Cow Ghee",
+        price: "1,350",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1610444400405-f377c8657685?q=80&w=800&auto=format&fit=crop",
+        tag: "Local",
+        desc: "Small-batch ghee hand-churned by local farmers.",
+        benefits: ["Supports Local", "Farm Fresh", "Traditional Soul"]
+    },
+    {
+        id: 13,
+        name: "Danedar Desi Ghee",
+        price: "850",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=800&auto=format&fit=crop",
+        tag: "Granular",
+        desc: "Authentic granular texture (Danedar) for classic Indian cooking.",
+        benefits: ["Great Texture", "Aromatic", "Ideal for Tadka"]
+    },
+    {
+        id: 14,
+        name: "Sahiwal Cow Ghee",
+        price: "1,650",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1596451190630-186aff535bf2?q=80&w=800&auto=format&fit=crop",
+        tag: "Premium",
+        desc: "Rich, creamy ghee from the high-yielding Sahiwal cows.",
+        benefits: ["High Fat Content", "Heart Healthy", "Premium Quality"]
+    },
+    {
+        id: 15,
+        name: "Coconut Ghee Blend",
+        price: "990",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?q=80&w=800&auto=format&fit=crop",
+        tag: "Unique",
+        desc: "A unique blend of Virgin Coconut Oil and A2 Ghee.",
+        benefits: ["MCT Rich", "Dual Benefits", "Vegan-ish"]
+    },
+    {
+        id: 16,
+        name: "Garlic Infused Ghee",
+        price: "1,100",
+        category: "Ghee",
+        image: "https://images.unsplash.com/photo-1596450514735-3b987625841e?q=80&w=800&auto=format&fit=crop",
+        tag: "Savory",
+        desc: "Roasted garlic infused in Bilona Ghee for a gourmet touch.",
+        benefits: ["Gourmet Flavor", "Time Saver", "Natural Antibiotic"]
+    },
+    // Additional Honey
+    {
+        id: 17,
+        name: "Acacia Honey",
+        price: "950",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1471943311424-646960669fba?q=80&w=800&auto=format&fit=crop",
+        tag: "Mild",
+        desc: "Clear, transparent honey with a delicate vanilla-like finish.",
+        benefits: ["Low Glycemic", "Delicate Taste", "Stays Liquid"]
+    },
+    {
+        id: 18,
+        name: "Sidr Honey",
+        price: "3,200",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=800&auto=format&fit=crop",
+        tag: "Ultimate",
+        desc: "Known as the world's most medicinal honey, sourced from Sidr trees.",
+        benefits: ["Wound Healing", "Potent Medicine", "Rare Harvest"]
+    },
+    {
+        id: 19,
+        name: "Eucalyptus Honey",
+        price: "750",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?q=80&w=800&auto=format&fit=crop",
+        tag: "Herbal",
+        desc: "Strong, aromatic honey with subtle notes of eucalyptus.",
+        benefits: ["Cough Relief", "Herbal Notes", "Immune Support"]
+    },
+    {
+        id: 20,
+        name: "Lychee Honey",
+        price: "680",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1471943311424-646960669fba?q=80&w=800&auto=format&fit=crop",
+        tag: "Fruity",
+        desc: "Fresh, fruity honey harvested from lychee orchards in Bihar.",
+        benefits: ["Fruity Aroma", "Kids Love It", "Zero Fat"]
+    },
+    {
+        id: 21,
+        name: "Ajwain Honey",
+        price: "720",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=800&auto=format&fit=crop",
+        tag: "Digestive",
+        desc: "Harvested from Ajwain fields, known for its digestive properties.",
+        benefits: ["Digestion Aid", "Anti-Fungal", "Traditional Remedy"]
+    },
+    {
+        id: 22,
+        name: "Tulsi Honey",
+        price: "890",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?q=80&w=800&auto=format&fit=crop",
+        tag: "Sacred",
+        desc: "Infused by bees from the nectar of Holy Basil (Tulsi) plants.",
+        benefits: ["Stress Reliever", "Purifying", "Spiritual Purity"]
+    },
+    {
+        id: 23,
+        name: "Neem Honey",
+        price: "990",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=800&auto=format&fit=crop",
+        tag: "Detox",
+        desc: "Dark, bitter-sweet honey known for its blood purifying properties.",
+        benefits: ["Blood Purifier", "Anti-Septic", "Natural Detox"]
+    },
+    {
+        id: 24,
+        name: "Saffron Honey",
+        price: "2,500",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1471943311424-646960669fba?q=80&w=800&auto=format&fit=crop",
+        tag: "Luxury",
+        desc: "White forest honey infused with the finest Kashmiri saffron strands.",
+        benefits: ["Radiant Skin", "Luxury Taste", "Aphrodisiac"]
+    },
+    {
+        id: 25,
+        name: "Cinnamon Honey",
+        price: "850",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?q=80&w=800&auto=format&fit=crop",
+        tag: "Warm",
+        desc: "A warm, comforting blend of raw honey and organic Ceylon cinnamon.",
+        benefits: ["Weight Management", "Warmth", "Metabolism Boost"]
+    },
+    {
+        id: 26,
+        name: "Jamun Honey",
+        price: "780",
+        category: "Honey",
+        image: "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=800&auto=format&fit=crop",
+        tag: "Diabetic Friendly",
+        desc: "Low glycemic honey from Jamun tree blossoms.",
+        benefits: ["Low Glycemic", "Rich in Iron", "Unique Tartness"]
     }
 ];
 

@@ -15,6 +15,9 @@ import ProductDetail from './pages/ProductDetail';
 import Contact from './pages/Contact';
 import Wholesale from './pages/Wholesale';
 import Certifications from './pages/Certifications';
+import Checkout from './pages/Checkout';
+import BundleBuilder from './pages/BundleBuilder';
+import Wishlist from './pages/Wishlist';
 
 // Components
 import SEO from './components/common/SEO';
@@ -41,6 +44,9 @@ const App = () => {
               <Route path="/contact" element={<Contact />} />
               <Route path="/wholesale" element={<Wholesale />} />
               <Route path="/certifications" element={<Certifications />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/bundle-builder" element={<BundleBuilder />} />
+              <Route path="/wishlist" element={<Wishlist />} />
             </Routes>
           </main>
           <Footer />

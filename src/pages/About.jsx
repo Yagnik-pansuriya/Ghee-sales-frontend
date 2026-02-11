@@ -2,6 +2,7 @@ import React from 'react';
 import SectionWrapper from '../components/layout/SectionWrapper';
 import { motion } from 'framer-motion';
 import FounderStory from '../components/sections/FounderStory';
+import ComparisonTool from '../components/sections/ComparisonTool';
 
 const About = () => {
     return (
@@ -36,19 +37,19 @@ const About = () => {
             {/* Founder Story Section */}
             <FounderStory />
 
-            {/* Mission */}
+            {/* Mission & Philosophy */}
             <SectionWrapper>
                 <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
                     <div className="text-center md:text-left">
-                        <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-primary">Our Philosophy</h2>
+                        <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-primary">Mission & Philosophy</h2>
                         <p className="text-lg text-text-muted leading-relaxed mb-8">
-                            At Ghee & Honey, we believe that food is not just sustenance; it's a sacred offering to the body. Every jar we fill is a testament to our commitment to quality, tradition, and transparency.
+                            Farm Begin was started with one simple mission — to bring pure, natural, and chemical-free food from the farm to your home. We proudly offer A2 Gir Cow Ghee and Natural Raw Honey, made using traditional methods and sourced directly from trusted farms.
                         </p>
                         <p className="text-lg text-text-muted leading-relaxed">
-                            We bridge the gap between ancient Bharat and modern India, bringing you the finest superfoods prepared exactly as nature intended—slow, pure, and full of life.
+                            In today’s market, where food purity is often compromised, Farm Begin stands for trust, purity, and honesty. We believe in providing real Vedic ghee and raw honey, just like our grandparents used.
                         </p>
                     </div>
-                    <div className="rounded-[40px] overflow-hidden hover:shadow-2xl transition-shadow duration-500">
+                    <div className="rounded-[40px] overflow-hidden hover:shadow-2xl transition-shadow duration-500 shadow-xl">
                         <img
                             src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1200&auto=format&fit=crop"
                             alt="Philosophy"
@@ -58,20 +59,30 @@ const About = () => {
                 </div>
             </SectionWrapper>
 
-            {/* Values Grid */}
+            {/* Comparison Section */}
+            <SectionWrapper>
+                <ComparisonTool />
+            </SectionWrapper>
+
+            {/* Vision & Why Choose Us */}
             <SectionWrapper bgColor="bg-cream">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-serif mb-4">Our Core Values</h2>
-                    <p className="max-w-2xl mx-auto text-text-muted">Guided by principles that put nature and health first.</p>
+                    <h2 className="text-4xl md:text-5xl font-serif mb-4 text-primary">Why Choose Farm Begin?</h2>
+                    <p className="max-w-2xl mx-auto text-text-muted text-lg">
+                        Our vision is to make every home healthier by providing pure food products that people can trust without doubt.
+                    </p>
                 </div>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {[
-                        { title: "Transparency", desc: "Know exactly where your food comes from. We provide full traceability for every batch." },
-                        { title: "Sustainability", desc: "We support eco-friendly farming practices that enrich the soil rather than depleting it." },
-                        { title: "Tradition", desc: "Modern technology is great, but some things are better done the old way—like our Bilona Ghee." },
+                        { title: "Direct from Farm", desc: "We source our products directly from trusted farms, ensuring zero adulteration." },
+                        { title: "Traditional Methods", desc: "From the Bilona method for Ghee to unheated Honey, we stick to ancestral techniques." },
+                        { title: "No Chemicals", desc: "100% natural. No shortcuts, no sugar mix, and no artificial flavors ever." },
+                        { title: "Health Focused", desc: "Retaining all natural enzymes and medicinal properties for your wellness." },
+                        { title: "Fair Pricing", desc: "Honest quality at a fair price, because health shouldn't be a luxury." },
+                        { title: "Trusted by Families", desc: "A brand built on the foundation of trust, purity, and absolute honesty." },
                     ].map((val, i) => (
-                        <div key={i} className="bg-white p-10 rounded-3xl shadow-soft hover:-translate-y-2 transition-transform duration-300">
-                            <h3 className="text-2xl font-serif font-bold mb-4 text-primary">{val.title}</h3>
+                        <div key={i} className="bg-white p-8 rounded-3xl shadow-soft hover:-translate-y-2 transition-transform duration-300 border border-secondary/10">
+                            <h3 className="text-xl font-serif font-bold mb-3 text-primary">{val.title}</h3>
                             <p className="text-text-muted leading-relaxed">{val.desc}</p>
                         </div>
                     ))}

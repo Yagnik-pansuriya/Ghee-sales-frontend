@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { FiShoppingBag, FiEye } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../redux/cartSlice';
-
+import WishlistButton from '../common/WishlistButton';
 import { getFeaturedProducts } from '../../data/products';
 
 const ProductShowcase = () => {
@@ -53,9 +53,10 @@ const ProductShowcase = () => {
 
                             {/* Overlay Actions */}
                             <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                                <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300 shadow-lg" title="Quick View">
-                                    <FiEye size={20} />
-                                </button>
+                                <WishlistButton
+                                    product={product}
+                                    className="w-12 h-12 transform translate-y-4 group-hover:translate-y-0 duration-300"
+                                />
                                 <button
                                     onClick={() => dispatch(addItem(product))}
                                     className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75 shadow-lg"

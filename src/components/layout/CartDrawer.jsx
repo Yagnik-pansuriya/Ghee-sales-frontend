@@ -1,12 +1,23 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiX, FiPlus, FiMinus, FiTrash2, FiShoppingBag } from 'react-icons/fi';
 import { setCartOpen, addItem, removeItem, deleteItem } from '../../redux/cartSlice';
+import ProgressBar from '../common/ProgressBar';
+import { products } from '../../data/products';
+
+const FREE_SHIPPING_THRESHOLD = 2500;
 
 const CartDrawer = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { items, totalAmount, isCartOpen } = useSelector((state) => state.cart);
+
+    const handleCheckout = () => {
+        dispatch(setCartOpen(false));
+        navigate('/checkout');
+    };
 
     return (
         <AnimatePresence>
@@ -42,6 +53,18 @@ const CartDrawer = () => {
                                 <FiX size={24} />
                             </button>
                         </div>
+
+                        {/* Progress Bar / Rewards */}
+                        {items.length > 0 && (
+                            <div className="px-6 py-4 bg-cream/30 border-b">
+                                <ProgressBar
+                                    current={totalAmount}
+                                    total={FREE_SHIPPING_THRESHOLD}
+                                    label="Free Shipping"
+                                    successMsg="🎉 You've unlocked Free Shipping!"
+                                />
+                            </div>
+                        )}
 
                         {/* Items List */}
                         <div className="flex-1 overflow-y-auto p-6 space-y-6">
@@ -103,7 +126,7 @@ const CartDrawer = () => {
                                                         {item.quantity}
                                                     </span>
                                                     <button
-                                                        onClick={() => dispatch(addItem({ id: item.id }))}
+                                                        onClick={() => dispatch(addItem(item))}
                                                         className="p-1 px-2 hover:bg-cream transition-colors border-l"
                                                     >
                                                         <FiPlus size={14} />
@@ -117,6 +140,35 @@ const CartDrawer = () => {
                                     </motion.div>
                                 ))
                             )}
+
+                            {/* Upsell Section */}
+                            {items.length > 0 && (
+                                <div className="mt-12 pt-8 border-t border-primary/5">
+                                    <h3 className="text-sm font-bold text-primary uppercase tracking-widest mb-6 opacity-60">Complete Your Ritual</h3>
+                                    <div className="space-y-4">
+                                        {products
+                                            .filter(p => !items.find(item => item.id === p.id))
+                                            .slice(0, 2)
+                                            .map(product => (
+                                                <div key={product.id} className="flex items-center gap-4 bg-cream/20 p-4 rounded-2xl border border-primary/5 group">
+                                                    <div className="w-16 h-16 bg-white rounded-xl overflow-hidden shrink-0 shadow-sm p-1">
+                                                        <img src={product.image} alt={product.name} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform" />
+                                                    </div>
+                                                    <div className="flex-1 min-w-0">
+                                                        <h4 className="font-bold text-primary text-sm truncate">{product.name}</h4>
+                                                        <p className="text-secondary font-bold text-xs">₹{product.price}</p>
+                                                    </div>
+                                                    <button
+                                                        onClick={() => dispatch(addItem(product))}
+                                                        className="px-4 py-2 bg-white text-primary text-xs font-bold rounded-xl border border-primary/10 hover:bg-primary hover:text-white transition-all shadow-sm active:scale-95"
+                                                    >
+                                                        Add
+                                                    </button>
+                                                </div>
+                                            ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
                         {/* Footer */}
@@ -129,7 +181,10 @@ const CartDrawer = () => {
                                 <p className="text-xs text-text-muted italic">
                                     Shipping and taxes calculated at checkout.
                                 </p>
-                                <button className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg shadow-glow hover:bg-primary-dark transition-all transform hover:-translate-y-1 active:scale-95">
+                                <button
+                                    onClick={handleCheckout}
+                                    className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg shadow-glow hover:bg-primary-dark transition-all transform hover:-translate-y-1 active:scale-95"
+                                >
                                     Secure Checkout
                                 </button>
                                 <button
