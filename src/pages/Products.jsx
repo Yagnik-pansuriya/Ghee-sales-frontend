@@ -5,12 +5,12 @@ import Button from '../components/common/Button';
 import { motion } from 'framer-motion';
 
 const allProducts = [
-    { id: 1, name: "A2 Gir Cow Ghee", price: "₹1,499", category: "Ghee", image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&q=80&w=800" },
-    { id: 2, name: "Raw Forest Honey", price: "₹850", category: "Honey", image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=800" },
-    { id: 3, name: "Spiced Turmeric Ghee", price: "₹950", category: "Ghee", image: "https://images.unsplash.com/photo-1620610996147-32128b9d4c2b?auto=format&fit=crop&q=80&w=800" },
-    { id: 4, name: "Wildflower Honey", price: "₹650", category: "Honey", image: "https://images.unsplash.com/photo-1587049352847-81a45d05c3d9?auto=format&fit=crop&q=80&w=800" },
-    { id: 5, name: "Buffalo Ghee", price: "₹1,100", category: "Ghee", image: "https://images.unsplash.com/photo-1610450949065-1f2841536730?auto=format&fit=crop&q=80&w=800" },
-    { id: 6, name: "Mustard Honey", price: "₹550", category: "Honey", image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=800" },
+    { id: 1, name: "A2 Gir Cow Ghee", price: "₹1,499", category: "Ghee", image: "/images/products/ghee-1.jpg" },
+    { id: 2, name: "Raw Forest Honey", price: "₹850", category: "Honey", image: "/images/products/honey-1.jpg" },
+    { id: 3, name: "Spiced Turmeric Ghee", price: "₹950", category: "Ghee", image: "/images/products/ghee-2.jpg" },
+    { id: 4, name: "Wildflower Honey", price: "₹650", category: "Honey", image: "/images/products/honey-2.jpg" },
+    { id: 5, name: "Buffalo Ghee", price: "₹1,100", category: "Ghee", image: "/images/products/buffalo-ghee.jpg" },
+    { id: 6, name: "Mustard Honey", price: "₹550", category: "Honey", image: "/images/products/mustard-honey.jpg" },
 ];
 
 const Products = () => {
@@ -35,8 +35,8 @@ const Products = () => {
                             key={cat}
                             onClick={() => setFilter(cat)}
                             className={`px-8 py-2 rounded-full border transition-all duration-300 ${filter === cat
-                                    ? 'bg-primary text-white border-primary'
-                                    : 'bg-transparent text-primary border-primary hover:bg-primary/10'
+                                ? 'bg-primary text-white border-primary'
+                                : 'bg-transparent text-primary border-primary hover:bg-primary/10'
                                 }`}
                         >
                             {cat}
