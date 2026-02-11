@@ -9,8 +9,8 @@ const allProducts = [
     { id: 2, name: "Raw Forest Honey", price: "₹850", category: "Honey", image: "/images/products/honey-1.jpg" },
     { id: 3, name: "Spiced Turmeric Ghee", price: "₹950", category: "Ghee", image: "/images/products/ghee-2.jpg" },
     { id: 4, name: "Wildflower Honey", price: "₹650", category: "Honey", image: "/images/products/honey-2.jpg" },
-    { id: 5, name: "Buffalo Ghee", price: "₹1,100", category: "Ghee", image: "/images/products/buffalo-ghee.jpg" },
-    { id: 6, name: "Mustard Honey", price: "₹550", category: "Honey", image: "/images/products/mustard-honey.jpg" },
+    { id: 5, name: "Buffalo Ghee", price: "₹1,100", category: "Ghee", image: "/images/products/ghee-3.jpg" },
+    { id: 6, name: "Mustard Honey", price: "₹550", category: "Honey", image: "/images/products/honey-3.jpg" },
 ];
 
 const Products = () => {

@@ -9,7 +9,7 @@ const About = () => {
             <section className="relative h-[60vh] flex items-center justify-center text-white text-center">
                 <div className="absolute inset-0">
                     <img
-                        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=2574"
+                        src="/images/hero/about-hero.jpg"
                         alt="Background"
                         className="w-full h-full object-cover"
                     />
@@ -46,7 +46,7 @@ const About = () => {
                     </div>
                     <div className="rounded-[40px] overflow-hidden hover:shadow-2xl transition-shadow duration-500">
                         <img
-                            src="https://images.unsplash.com/photo-1471193945509-9adadd0974ce?auto=format&fit=crop&q=80&w=800"
+                            src="/images/hero/philosophy.jpg"
                             alt="Philosophy"
                             className="w-full h-full object-cover"
                         />
