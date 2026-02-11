@@ -3,13 +3,22 @@ import SectionWrapper from '../components/layout/SectionWrapper';
 import { useForm } from 'react-hook-form';
 import Button from '../components/common/Button';
 import { FiBox, FiTruck, FiUsers } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Wholesale = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [isSuccess, setIsSuccess] = React.useState(false);
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        setIsSubmitting(true);
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
         console.log("B2B Form Data:", data);
-        alert("Thank you for your business inquiry! Our wholesale team will contact you within 24 hours.");
+        setIsSubmitting(false);
+        setIsSuccess(true);
+        reset();
+        setTimeout(() => setIsSuccess(false), 5000);
     };
 
     return (
@@ -96,9 +105,22 @@ const Wholesale = () => {
                             {errors.requirement && <span className="text-red-500 text-xs">Required</span>}
                         </div>
 
-                        <Button type="submit" size="lg" className="w-full">
-                            Request Quote
+                        <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                            {isSubmitting ? "Sending..." : "Request Quote"}
                         </Button>
+
+                        <AnimatePresence>
+                            {isSuccess && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 10 }}
+                                    className="p-4 bg-green-50 text-green-700 rounded-xl text-center font-bold"
+                                >
+                                    Thank you! Your quote request has been sent successfully.
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </form>
                 </div>
             </SectionWrapper>

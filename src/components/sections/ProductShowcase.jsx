@@ -51,19 +51,21 @@ const ProductShowcase = () => {
                                 />
                             </Link>
 
-                            {/* Overlay Actions */}
-                            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                                <WishlistButton
-                                    product={product}
-                                    className="w-12 h-12 transform translate-y-4 group-hover:translate-y-0 duration-300"
-                                />
-                                <button
-                                    onClick={() => dispatch(addItem(product))}
-                                    className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75 shadow-lg"
-                                    title="Add to Cart"
-                                >
-                                    <FiShoppingBag size={20} />
-                                </button>
+                            {/* Overlay Actions (Desktop) */}
+                            <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-4">
+                                <div className="flex gap-3 mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    <WishlistButton
+                                        product={product}
+                                        className="w-12 h-12 bg-white"
+                                    />
+                                    <button
+                                        onClick={() => dispatch(addItem(product))}
+                                        className="h-12 px-6 bg-primary text-white rounded-full flex items-center justify-center gap-2 hover:bg-primary-dark transition-all shadow-lg font-bold text-sm"
+                                        title="Quick Add"
+                                    >
+                                        <FiShoppingBag size={18} /> Quick Add
+                                    </button>
+                                </div>
                             </div>
                         </div>
 

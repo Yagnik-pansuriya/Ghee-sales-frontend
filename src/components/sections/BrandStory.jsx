@@ -1,16 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiCheckCircle, FiHeart, FiTarget, FiStar, FiShield } from 'react-icons/fi';
+import { FiCheckCircle, FiHeart, FiTarget, FiStar, FiShield, FiSun, FiZap } from 'react-icons/fi';
+import { GiCow, GiHoneyJar } from 'react-icons/gi';
 import SectionWrapper from '../layout/SectionWrapper';
 
 const BrandStory = () => {
     const benefits = [
-        { title: "Direct from farm", icon: <FiStar /> },
-        { title: "No adulteration", icon: <FiShield /> },
-        { title: "Traditional preparation", icon: <FiHeart /> },
-        { title: "Health-focused", icon: <FiCheckCircle /> },
-        { title: "Honest quality", icon: <FiStar /> },
-        { title: "Trusted by families", icon: <FiHeart /> },
+        { title: "Direct sourcing", icon: <FiStar /> },
+        { title: "Zero additives", icon: <FiShield /> },
+        { title: "Ancestral method", icon: <FiZap /> },
+        { title: "Lab certified", icon: <FiCheckCircle /> },
+        { title: "Honest pricing", icon: <FiHeart /> },
+        { title: "Small batch", icon: <FiSun /> },
     ];
 
     return (
@@ -50,13 +51,15 @@ const BrandStory = () => {
                             viewport={{ once: true }}
                             className="bg-white/5 backdrop-blur-md p-10 rounded-[40px] border border-white/10 hover:border-secondary/30 transition-colors group"
                         >
-                            <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">🐄</div>
+                            <div className="text-secondary text-5xl mb-6 transform group-hover:scale-110 transition-transform">
+                                <GiCow />
+                            </div>
                             <h3 className="text-2xl font-serif font-bold text-secondary mb-4">Our A2 Gir Cow Ghee</h3>
                             <p className="text-white/70 mb-6 leading-relaxed">
-                                Prepared from the milk of pure Gir cows using the traditional <strong>Bilona method</strong>. This is real Vedic ghee, just like our grandparents used.
+                                Curated from the milk of free-grazing Gir cows using the **Bilona method**. This is authentic Vedic ghee, preserved as a gift from nature.
                             </p>
                             <ul className="space-y-3">
-                                {["Natural aroma & rich taste", "High nutrition & medicinal value", "Easy digestion & immunity support"].map((item, i) => (
+                                {["Rich granular texture", "High medicinal value", "Ancient hand-churned process"].map((item, i) => (
                                     <li key={i} className="flex items-start gap-3 text-sm text-white/80">
                                         <FiCheckCircle className="text-secondary mt-1 shrink-0" />
                                         <span>{item}</span>
@@ -72,13 +75,15 @@ const BrandStory = () => {
                             viewport={{ once: true }}
                             className="bg-white/5 backdrop-blur-md p-10 rounded-[40px] border border-white/10 hover:border-secondary/30 transition-colors group"
                         >
-                            <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">🍯</div>
+                            <div className="text-secondary text-5xl mb-6 transform group-hover:scale-110 transition-transform">
+                                <GiHoneyJar />
+                            </div>
                             <h3 className="text-2xl font-serif font-bold text-secondary mb-4">Our Natural Honey</h3>
                             <p className="text-white/70 mb-6 leading-relaxed">
-                                100% raw, unprocessed, and unheated. Collected naturally from beehives, retaining all enzymes and medicinal benefits.
+                                100% raw and unprocessed. Sourced sustainably from beehives, retaining all bioactive enzymes and essential medicinal benefits.
                             </p>
                             <ul className="space-y-3">
-                                {["No sugar mix or chemicals", "No artificial flavors", "Rich in naturally occurring enzymes"].map((item, i) => (
+                                {["No heat processing", "Unfiltered & unpasteurized", "Seasonal harvest varieties"].map((item, i) => (
                                     <li key={i} className="flex items-start gap-3 text-sm text-white/80">
                                         <FiCheckCircle className="text-secondary mt-1 shrink-0" />
                                         <span>{item}</span>

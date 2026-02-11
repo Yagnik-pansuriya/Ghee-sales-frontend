@@ -18,6 +18,10 @@ import Certifications from './pages/Certifications';
 import Checkout from './pages/Checkout';
 import BundleBuilder from './pages/BundleBuilder';
 import Wishlist from './pages/Wishlist';
+import Purity from './pages/Purity';
+import OrderTracking from './pages/OrderTracking';
+import Loyalty from './pages/Loyalty';
+import OrderSuccess from './pages/OrderSuccess';
 
 // Components
 import SEO from './components/common/SEO';
@@ -47,6 +51,10 @@ const App = () => {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/bundle-builder" element={<BundleBuilder />} />
               <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/purity" element={<Purity />} />
+              <Route path="/track-order" element={<OrderTracking />} />
+              <Route path="/loyalty" element={<Loyalty />} />
+              <Route path="/order-success" element={<OrderSuccess />} />
             </Routes>
           </main>
           <Footer />

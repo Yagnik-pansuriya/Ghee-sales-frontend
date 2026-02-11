@@ -40,7 +40,7 @@ const Wishlist = () => {
                         <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white">
                             <FiShoppingBag size={14} />
                         </div>
-                        <span className="font-bold text-sm md:text-base">successfully {addedItem} add to cart</span>
+                        <span className="font-bold text-sm md:text-base">Successfully added {addedItem} to cart</span>
                     </motion.div>
                 )}
             </AnimatePresence>

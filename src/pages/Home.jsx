@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
 import { FiArrowRight, FiGift } from 'react-icons/fi';
 import BrandStory from '../components/sections/BrandStory';
+import FAQ from '../components/sections/FAQ';
+import BilonaJourney from '../components/sections/BilonaJourney';
 
 const Home = () => {
     return (
@@ -25,6 +27,8 @@ const Home = () => {
             <div id="why-us">
                 <WhyChooseUs />
             </div>
+
+            <BilonaJourney />
 
             <div id="products">
                 <ProductShowcase />
@@ -81,6 +85,8 @@ const Home = () => {
             </div>
 
             <BrandStory />
+
+            <FAQ />
         </div>
     );
 };

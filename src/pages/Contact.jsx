@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import SectionWrapper from '../components/layout/SectionWrapper';
 import { useForm } from 'react-hook-form';
 import Button from '../components/common/Button';

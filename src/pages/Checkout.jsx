@@ -16,7 +16,6 @@ const STEPS = [
 
 const Checkout = () => {
     const [currentStep, setCurrentStep] = useState(0);
-    const [isOrderPlaced, setIsOrderPlaced] = useState(false);
     const { items, totalAmount } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -38,13 +37,17 @@ const Checkout = () => {
     };
 
     const handlePlaceOrder = () => {
-        setIsOrderPlaced(true);
-        setTimeout(() => {
-            dispatch(clearCart());
-        }, 100);
+        const orderId = `FB-${Math.floor(Math.random() * 90000) + 10000}`;
+        const email = formData.email;
+
+        // Dispatch clear cart
+        dispatch(clearCart());
+
+        // Redirect to success page
+        navigate(`/order-success?id=${orderId}&email=${email}`);
     };
 
-    if (items.length === 0 && !isOrderPlaced) {
+    if (items.length === 0) {
         return (
             <div className="pt-32 pb-20 min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
                 <div className="w-20 h-20 bg-cream rounded-full flex items-center justify-center text-secondary mb-6">
@@ -59,38 +62,6 @@ const Checkout = () => {
         );
     }
 
-    if (isOrderPlaced) {
-        return (
-            <div className="pt-32 pb-20 min-h-screen bg-cream/30 flex items-center justify-center px-4">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-white p-10 md:p-16 rounded-[40px] shadow-xl text-center max-w-2xl w-full border border-secondary/10"
-                >
-                    <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8">
-                        <FiCheckCircle size={48} />
-                    </div>
-                    <h1 className="text-4xl font-serif font-bold text-primary mb-4">Order Placed Successfully!</h1>
-                    <p className="text-lg text-text-muted mb-8">
-                        Thank you for choosing Farm Begin. Your journey to purity has started. We've sent an email confirmation to **{formData.email}**.
-                    </p>
-                    <div className="bg-cream p-6 rounded-2xl mb-10 text-left">
-                        <div className="flex justify-between mb-2">
-                            <span className="text-text-muted">Order ID:</span>
-                            <span className="font-bold text-primary">#FB-{Math.floor(Math.random() * 90000) + 10000}</span>
-                        </div>
-                        <div className="flex justify-between">
-                            <span className="text-text-muted">Expected Delivery:</span>
-                            <span className="font-bold text-primary">3-5 Business Days</span>
-                        </div>
-                    </div>
-                    <Button as={Link} to="/" variant="primary" size="lg" className="w-full sm:w-auto">
-                        Back to Home
-                    </Button>
-                </motion.div>
-            </div>
-        );
-    }
 
     return (
         <div className="pt-32 pb-20 bg-white min-h-screen">

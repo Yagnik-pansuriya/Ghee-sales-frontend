@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getProductById } from '../data/products';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -6,12 +6,28 @@ import { addItem } from '../redux/cartSlice';
 import SectionWrapper from '../components/layout/SectionWrapper';
 import Button from '../components/common/Button';
 import { FiShoppingBag, FiStar, FiCheck, FiMinus, FiPlus, FiArrowLeft } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import Reviews from '../components/sections/Reviews';
 
 const ProductDetail = () => {
     const { id } = useParams();
     const product = getProductById(id);
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
+    const [showSticky, setShowSticky] = useState(false);
+    const mainCtaRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (mainCtaRef.current) {
+                const rect = mainCtaRef.current.getBoundingClientRect();
+                setShowSticky(rect.bottom < 0);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     if (!product) {
         return (
@@ -69,7 +85,7 @@ const ProductDetail = () => {
                             </ul>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex flex-col sm:flex-row gap-4" ref={mainCtaRef}>
                             <div className="flex items-center border border-border rounded-full px-4 gap-4 bg-white justify-between sm:justify-start py-2 sm:py-0">
                                 <button
                                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -96,6 +112,38 @@ const ProductDetail = () => {
                         </div>
                     </div>
                 </div>
+            </SectionWrapper>
+
+            {/* Sticky Mobile CTA */}
+            <AnimatePresence>
+                {showSticky && (
+                    <motion.div
+                        initial={{ y: 100 }}
+                        animate={{ y: 0 }}
+                        exit={{ y: 100 }}
+                        className="fixed bottom-0 left-0 right-0 z-[60] bg-white border-t border-border p-4 md:hidden shadow-[0_-10px_30px_rgba(0,0,0,0.05)]"
+                    >
+                        <div className="flex items-center justify-between gap-4">
+                            <div className="flex-1 overflow-hidden">
+                                <h4 className="font-serif font-bold text-primary truncate leading-none mb-1">{product.name}</h4>
+                                <p className="text-secondary font-bold text-sm leading-none">₹{product.price}</p>
+                            </div>
+                            <Button
+                                variant="primary"
+                                size="sm"
+                                className="h-12 px-8 shadow-glow"
+                                onClick={handleAddToCart}
+                            >
+                                Add to Cart
+                            </Button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Social Proof & Reviews */}
+            <SectionWrapper>
+                <Reviews />
             </SectionWrapper>
         </div>
     );

@@ -5,6 +5,7 @@ import Button from '../components/common/Button';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../redux/cartSlice';
+import { FiShoppingBag } from 'react-icons/fi';
 import WishlistButton from '../components/common/WishlistButton';
 
 import { products as allProducts } from '../data/products';
@@ -55,19 +56,36 @@ const Products = () => {
                             key={product.id}
                             className="group bg-white rounded-3xl p-6 shadow-sm hover:shadow-card transition-all duration-300"
                         >
-                            <div className="block overflow-hidden rounded-2xl mb-6 aspect-square bg-cream relative">
+                            <div className="relative overflow-hidden rounded-2xl mb-6 aspect-square bg-cream group-hover:bg-cream/50 transition-colors">
                                 <Link to={`/products/${product.id}`}>
                                     <img
                                         src={product.image}
                                         alt={product.name}
-                                        className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
+                                        className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-700 ease-out"
                                         loading="lazy"
                                     />
                                 </Link>
-                                <WishlistButton
-                                    product={product}
-                                    className="absolute top-4 right-4 z-10"
-                                />
+
+                                {/* Hover Actions (Desktop) */}
+                                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-4">
+                                    <div className="flex gap-3 mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <WishlistButton
+                                            product={product}
+                                            className="w-10 h-10 bg-white"
+                                        />
+                                        <button
+                                            onClick={() => dispatch(addItem(product))}
+                                            className="h-10 px-4 bg-primary text-white rounded-full flex items-center justify-center gap-2 hover:bg-primary-dark transition-all shadow-lg font-bold text-xs"
+                                        >
+                                            <FiShoppingBag size={14} /> Quick Add
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Wishlist (Mobile/Always visible fallback if needed) */}
+                                <div className="absolute top-4 right-4 md:hidden">
+                                    <WishlistButton product={product} />
+                                </div>
                             </div>
                             <div className="text-left">
                                 <span className="text-xs uppercase tracking-widest text-secondary font-bold mb-2 block">{product.category}</span>
