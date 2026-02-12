@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const FounderStory = () => {
     return (
         <SectionWrapper bgColor="bg-white">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -30,7 +30,7 @@ const FounderStory = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center md:text-left"
+                    className="text-center lg:text-left"
                 >
                     <span className="text-secondary font-bold tracking-[0.2em] uppercase text-sm mb-4 block">The Heart of Farm Begin</span>
                     <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-primary leading-tight">Authenticity in Every Drop</h2>

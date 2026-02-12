@@ -33,7 +33,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
                 onClick={onClick}
                 className="w-full py-6 flex items-center justify-between text-left hover:text-secondary transition-colors group"
             >
-                <span className="text-lg md:text-xl font-serif font-bold text-primary group-hover:text-secondary transition-colors">
+                <span className="text-base md:text-xl font-serif font-bold text-primary group-hover:text-secondary transition-colors leading-snug">
                     {question}
                 </span>
                 <span className={`p-2 rounded-full ${isOpen ? 'bg-secondary text-white' : 'bg-cream text-primary'} transition-all`}>
@@ -64,7 +64,7 @@ const FAQ = () => {
 
     return (
         <SectionWrapper id="faq" bgColor="bg-white">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-5xl mx-auto">
                 <div className="text-center mb-16">
                     <div className="inline-flex items-center gap-2 text-secondary font-bold uppercase tracking-widest text-sm mb-4">
                         <FiHelpCircle />

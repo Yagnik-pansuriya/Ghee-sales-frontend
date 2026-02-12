@@ -23,13 +23,13 @@ const ComparisonTool = () => {
             </div>
 
             <div className="max-w-4xl mx-auto px-4">
-                <div className="overflow-hidden rounded-[40px] shadow-2xl border border-secondary/10 bg-white">
-                    <table className="w-full text-left border-collapse">
+                <div className="overflow-x-auto rounded-[30px] md:rounded-[40px] shadow-2xl border border-secondary/10 bg-white custom-scrollbar relative">
+                    <table className="w-full text-left border-collapse min-w-[600px] md:min-w-full">
                         <thead>
                             <tr className="bg-primary text-white">
-                                <th className="p-6 md:p-8 font-serif text-xl border-r border-white/10">Features</th>
-                                <th className="p-6 md:p-8 font-serif text-xl text-center bg-secondary/90">Farm Begin</th>
-                                <th className="p-6 md:p-8 font-serif text-xl text-center border-l border-white/10 opacity-60">Generic Brands</th>
+                                <th className="p-4 md:p-8 font-serif text-lg md:text-xl border-r border-white/10">Features</th>
+                                <th className="p-4 md:p-8 font-serif text-lg md:text-xl text-center bg-secondary/90">Farm Begin</th>
+                                <th className="p-4 md:p-8 font-serif text-lg md:text-xl text-center border-l border-white/10 opacity-60">Generic Brands</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,19 +42,19 @@ const ComparisonTool = () => {
                                     transition={{ delay: idx * 0.1 }}
                                     className={idx % 2 === 0 ? 'bg-white' : 'bg-cream/20'}
                                 >
-                                    <td className="p-6 md:p-8 font-bold text-primary border-r border-primary/5">{f.name}</td>
-                                    <td className="p-6 md:p-8 text-center bg-secondary/5 border-r border-primary/5">
+                                    <td className="p-4 md:p-8 font-bold text-primary border-r border-primary/5 text-sm md:text-base">{f.name}</td>
+                                    <td className="p-4 md:p-8 text-center bg-secondary/5 border-r border-primary/5">
                                         <div className="flex flex-col items-center gap-2">
-                                            <span className="p-1 px-4 text-xs font-bold text-secondary bg-secondary/10 rounded-full flex items-center gap-1">
+                                            <span className="p-1 px-3 md:px-4 text-[10px] md:text-xs font-bold text-secondary bg-secondary/10 rounded-full flex items-center gap-1">
                                                 <FiCheck /> Premium
                                             </span>
-                                            <span className="font-bold text-primary">{f.fb}</span>
+                                            <span className="font-bold text-primary text-sm md:text-base">{f.fb}</span>
                                         </div>
                                     </td>
-                                    <td className="p-6 md:p-8 text-center text-text-muted opacity-70">
+                                    <td className="p-4 md:p-8 text-center text-text-muted opacity-70">
                                         <div className="flex flex-col items-center gap-2">
                                             <FiX className="text-red-400" />
-                                            <span className="text-sm">{f.generic}</span>
+                                            <span className="text-xs md:text-sm">{f.generic}</span>
                                         </div>
                                     </td>
                                 </motion.tr>

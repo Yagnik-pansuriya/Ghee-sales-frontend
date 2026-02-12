@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
@@ -12,25 +12,44 @@ import clsx from 'clsx';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const lastScrollY = useRef(0);
     const location = useLocation();
 
     const dispatch = useDispatch();
     const { items } = useSelector((state) => state.cart);
     const wishlistItems = useSelector((state) => state.wishlist.items);
+
     const cartCount = items.reduce((total, item) => total + item.quantity, 0);
     const wishlistCount = wishlistItems.length;
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            const currentScrollY = window.scrollY;
+
+            // Handle background change (scrolled state)
+            setIsScrolled(currentScrollY > 30);
+
+            // Handle visibility (hide on scroll down, show on scroll up)
+            if (currentScrollY < 100) {
+                setIsVisible(true);
+            } else if (currentScrollY > lastScrollY.current) {
+                // Scrolling down
+                setIsVisible(false);
+            } else {
+                // Scrolling up
+                setIsVisible(true);
+            }
+
+            lastScrollY.current = currentScrollY;
         };
-        window.addEventListener('scroll', handleScroll);
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu on route change
     useEffect(() => {
         setIsMobileMenuOpen(false);
     }, [location]);
@@ -42,10 +61,20 @@ const Navbar = () => {
             path: '/products',
             subItems: [
                 { name: 'All Products', path: '/products' },
-                { name: 'Bundle Builder', path: '/bundle-builder', isNew: true }
+                { name: 'Bundle Builder', path: '/bundle-builder', isNew: true },
+                { name: 'Gift a Ritual', path: '/gifting', isNew: true }
             ]
         },
-        { name: 'Our Story', path: '/about' },
+        {
+            name: 'The Farm',
+            path: '/about',
+            subItems: [
+                { name: 'Our Story', path: '/about' },
+                { name: 'Wisdom Hub', path: '/wisdom', isNew: true },
+                { name: 'Trace the Source', path: '/traceability', isNew: true },
+                { name: 'The Vedic Life', path: '/magazine', isNew: true }
+            ]
+        },
         { name: 'Wholesale', path: '/wholesale' },
         { name: 'Certifications', path: '/certifications' },
         { name: 'Contact', path: '/contact' },
@@ -55,38 +84,43 @@ const Navbar = () => {
         <>
             <motion.header
                 initial={{ y: -100 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.5 }}
+                animate={{ y: isVisible ? 0 : -110 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
                 className={clsx(
-                    'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+                    "fixed top-0 left-0 right-0 z-50 transition-all duration-300 gpu-accelerated will-change-[transform,padding,background-color,backdrop-filter]",
                     isScrolled
-                        ? 'bg-white/90 backdrop-blur-md py-3 shadow-sm border-b border-border/50'
-                        : 'bg-transparent py-5 lg:py-6'
+                        ? "bg-white/90 backdrop-blur-lg shadow-md border-b border-gray-200 py-0.5"
+                        : "bg-transparent py-1.5"
                 )}
             >
-                <div className="container mx-auto flex items-center justify-between">
-                    <Logo isScrolled={isScrolled} />
+                {/* MAIN CONTAINER */}
+                <div className="relative max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
 
-                    <nav className="hidden lg:flex items-center gap-8">
+                    {/* Logo */}
+                    <div className="flex items-center">
+                        <Logo isScrolled={isScrolled} />
+                    </div>
+
+                    {/* Desktop Nav */}
+                    <nav className="hidden lg:flex items-center gap-10">
                         {navLinks.map((link) => (
                             <div key={link.name} className="relative group py-2">
                                 <Link
                                     to={link.path}
                                     className={clsx(
-                                        "font-medium transition-colors relative text-sm tracking-wide uppercase flex items-center gap-1",
-                                        isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
+                                        "text-sm tracking-wider uppercase font-medium transition-all duration-300 relative flex items-center gap-1",
+                                        isScrolled || location.pathname !== '/'
+                                            ? "text-gray-700 hover:text-amber-700"
+                                            : "text-white hover:text-amber-300"
                                     )}
                                 >
                                     {link.name}
                                     {link.subItems && (
-                                        <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </svg>
                                     )}
-                                    <span className={clsx(
-                                        "absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full",
-                                        isScrolled || location.pathname !== '/' ? 'bg-primary' : 'bg-secondary'
-                                    )} />
+                                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-amber-600 transition-all duration-300 group-hover:w-full" />
                                 </Link>
 
                                 {/* Dropdown Menu */}
@@ -114,64 +148,60 @@ const Navbar = () => {
                         ))}
                     </nav>
 
-                    {/* Icons & CTA */}
+                    {/* Right Side */}
                     <div className="hidden lg:flex items-center gap-6">
+
                         <button
                             onClick={() => setIsSearchOpen(true)}
                             className={clsx(
-                                "transition-colors hover:scale-110 duration-200",
-                                isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
+                                "transition hover:scale-110 duration-200",
+                                isScrolled || location.pathname !== '/'
+                                    ? "text-gray-700 hover:text-amber-700"
+                                    : "text-white hover:text-amber-300"
                             )}
                         >
-                            <FiSearch size={22} />
+                            <FiSearch size={20} />
                         </button>
+
                         <Link
                             to="/wishlist"
-                            className={clsx(
-                                "transition-colors hover:scale-110 duration-200 relative",
-                                isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
-                            )}
+                            className="relative transition hover:scale-110 duration-200"
                         >
-                            <FiHeart size={22} />
+                            <FiHeart size={20} />
                             {wishlistCount > 0 && (
-                                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] text-white font-bold">
+                                <span className="absolute -top-2 -right-2 bg-amber-600 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
                                     {wishlistCount}
                                 </span>
                             )}
                         </Link>
+
                         <button
                             onClick={() => dispatch(toggleCart())}
-                            className={clsx(
-                                "transition-colors hover:scale-110 duration-200 relative",
-                                isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
-                            )}
+                            className="relative transition hover:scale-110 duration-200"
                         >
-                            <FiShoppingBag size={22} />
+                            <FiShoppingBag size={20} />
                             {cartCount > 0 && (
-                                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] text-white font-bold">
+                                <span className="absolute -top-2 -right-2 bg-amber-600 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
                                     {cartCount}
                                 </span>
                             )}
                         </button>
-                        <Button
-                            size="sm"
-                            variant={isScrolled || location.pathname !== '/' ? 'primary' : 'secondary'}
-                            className="ml-2"
-                        >
-                            Shop Now
-                        </Button>
+
+                        <Link to="/products">
+                            <Button size="sm" variant="primary">
+                                Shop Now
+                            </Button>
+                        </Link>
                     </div>
 
-                    {/* Mobile Toggle */}
+                    {/* Mobile Button */}
                     <button
-                        className={clsx(
-                            "lg:hidden transition-colors p-2",
-                            isScrolled || location.pathname !== '/' ? 'text-text-main hover:text-primary' : 'text-white hover:text-secondary'
-                        )}
+                        className="lg:hidden text-2xl"
                         onClick={() => setIsMobileMenuOpen(true)}
                     >
-                        <HiMenuAlt3 size={28} />
+                        <HiMenuAlt3 />
                     </button>
+
                 </div>
             </motion.header>
 
@@ -182,121 +212,65 @@ const Navbar = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm lg:hidden"
+                        className="fixed inset-0 bg-black/50 z-[60] lg:hidden"
                         onClick={() => setIsMobileMenuOpen(false)}
                     >
                         <motion.div
                             initial={{ x: '100%' }}
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
-                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-cream shadow-2xl flex flex-col"
+                            transition={{ type: 'spring', damping: 25 }}
+                            className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-white p-8"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="p-6 flex items-center justify-between border-b border-border">
-                                <span className="font-serif text-2xl font-bold text-primary">Menu</span>
-                                <button
+                            <div className="flex justify-between items-center mb-8">
+                                <h2 className="text-xl font-semibold">Menu</h2>
+                                <HiX
+                                    className="text-2xl cursor-pointer"
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-text-muted hover:text-primary p-2 bg-white rounded-full shadow-sm"
-                                >
-                                    <HiX size={24} />
-                                </button>
+                                />
                             </div>
 
-                            <nav className="flex-1 overflow-y-auto py-6 px-6 flex flex-col gap-4">
-                                {navLinks.map((link, idx) => (
-                                    <motion.div
-                                        key={link.name}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.1 + idx * 0.05 }}
-                                        className="flex flex-col gap-2"
-                                    >
+                            <div className="flex flex-col gap-6">
+                                {navLinks.map(link => (
+                                    <div key={link.name} className="flex flex-col gap-2">
                                         <Link
                                             to={link.path}
-                                            className="text-xl font-serif font-bold text-text-main hover:text-primary transition-colors flex items-center justify-between group"
+                                            className="text-lg font-medium hover:text-amber-600 transition flex items-center justify-between"
+                                            onClick={() => !link.subItems && setIsMobileMenuOpen(false)}
                                         >
                                             {link.name}
-                                            {link.subItems ? (
-                                                <span className="text-secondary text-xs font-sans font-bold py-1 px-2 bg-secondary/10 rounded-full">Explore</span>
-                                            ) : (
-                                                <span className="w-8 h-[1px] bg-border group-hover:bg-primary transition-colors" />
-                                            )}
+                                            {link.subItems && <span className="text-[10px] bg-secondary/10 text-secondary px-2 py-1 rounded-full font-bold uppercase">Explore</span>}
                                         </Link>
 
                                         {/* Mobile Sub Items */}
                                         {link.subItems && (
-                                            <div className="flex flex-col gap-3 ml-4 mt-2 border-l-2 border-secondary/20 pl-4">
+                                            <div className="flex flex-col gap-3 ml-4 mt-2 border-l border-amber-600/20 pl-4">
                                                 {link.subItems.map(sub => (
                                                     <Link
-                                                        key={sub.path}
+                                                        key={sub.name}
                                                         to={sub.path}
-                                                        className="text-lg font-medium text-text-muted hover:text-secondary transition-colors flex items-center gap-2"
+                                                        onClick={() => setIsMobileMenuOpen(false)}
+                                                        className="text-base font-medium text-gray-500 hover:text-amber-600 transition flex items-center gap-2"
                                                     >
                                                         {sub.name}
-                                                        {sub.isNew && <span className="bg-secondary text-white text-[10px] px-2 py-0.5 rounded-full font-bold">NEW</span>}
+                                                        {sub.isNew && <span className="bg-amber-600 text-white text-[8px] px-2 py-0.5 rounded-full font-bold">NEW</span>}
                                                     </Link>
                                                 ))}
                                             </div>
                                         )}
-                                    </motion.div>
+                                    </div>
                                 ))}
-                            </nav>
-
-                            <div className="p-6 border-t border-border bg-white mt-auto">
-                                <div className="flex justify-center gap-8 text-text-muted">
-                                    <div
-                                        onClick={() => setIsSearchOpen(true)}
-                                        className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors"
-                                    >
-                                        <FiSearch size={22} />
-                                        <span className="text-xs uppercase tracking-wider">Search</span>
-                                    </div>
-                                    <Link
-                                        to="/wishlist"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors"
-                                    >
-                                        <div className="relative">
-                                            <FiHeart size={22} />
-                                            {wishlistCount > 0 && (
-                                                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-secondary text-[8px] text-white font-bold">
-                                                    {wishlistCount}
-                                                </span>
-                                            )}
-                                        </div>
-                                        <span className="text-xs uppercase tracking-wider">Saved</span>
-                                    </Link>
-                                    <div
-                                        onClick={() => {
-                                            setIsMobileMenuOpen(false);
-                                            dispatch(toggleCart());
-                                        }}
-                                        className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors"
-                                    >
-                                        <div className="relative">
-                                            <FiShoppingBag size={22} />
-                                            {cartCount > 0 && (
-                                                <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-secondary text-[8px] text-white font-bold">
-                                                    {cartCount}
-                                                </span>
-                                            )}
-                                        </div>
-                                        <span className="text-xs uppercase tracking-wider">Cart</span>
-                                    </div>
-                                    <div className="flex flex-col items-center gap-1 cursor-pointer hover:text-primary transition-colors">
-                                        <FiPhone size={22} />
-                                        <span className="text-xs uppercase tracking-wider">Call</span>
-                                    </div>
-                                </div>
                             </div>
                         </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+            <SearchOverlay
+                isOpen={isSearchOpen}
+                onClose={() => setIsSearchOpen(false)}
+            />
         </>
     );
 };

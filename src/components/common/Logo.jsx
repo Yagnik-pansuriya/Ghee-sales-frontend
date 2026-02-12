@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import clsx from 'clsx';
+import logoImg from '../../assets/final-logo.png';
 
-const Logo = () => {
+const Logo = ({ isScrolled }) => {
     return (
-        <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-secondary font-serif font-bold text-xl group-hover:bg-secondary group-hover:text-primary transition-colors duration-300">
-                FB
-            </div>
-            <div className="flex flex-col">
-                <span className="font-serif font-bold text-xl leading-none text-primary group-hover:text-secondary transition-colors duration-300">
-                    Farm Begin
-                </span>
-                <span className="text-[0.65rem] tracking-[0.2em] font-sans uppercase text-text-muted">
-                    Organic | Pure
-                </span>
+        <Link to="/" className="flex items-center group">
+            <div className="relative w-56 h-28 md:w-80 md:h-40 transition-all duration-500 ease-in-out">
+                <img
+                    src={logoImg}
+                    alt="Farm Begin Logo"
+                    className={clsx(
+                        "w-full h-full object-contain object-left group-hover:scale-105 transition-transform duration-500",
+                        !isScrolled && "brightness-0 invert contrast-[1.1]"
+                    )}
+                />
             </div>
         </Link>
     );

@@ -46,7 +46,7 @@ const Wishlist = () => {
             </AnimatePresence>
 
             <SectionWrapper>
-                <div className="max-w-6xl mx-auto">
+                <div className="max-w-5xl mx-auto">
                     <div className="flex items-center justify-between mb-12">
                         <div>
                             <h1 className="text-4xl font-serif font-bold text-primary mb-2">My Wishlist</h1>
@@ -80,7 +80,7 @@ const Wishlist = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className="bg-white rounded-[40px] border border-border overflow-hidden hover:shadow-xl transition-all group"
+                                    className="bg-white rounded-[40px] border border-border overflow-hidden hover:shadow-xl transition-all group relative"
                                 >
                                     <div className="aspect-square bg-cream relative">
                                         <img src={item.image} alt={item.name} className="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-700" />

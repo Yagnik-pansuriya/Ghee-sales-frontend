@@ -49,9 +49,9 @@ const WhyChooseUs = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1, duration: 0.5 }}
-                        className="bg-white p-8 rounded-3xl shadow-soft hover:shadow-card transition-all duration-300 group text-center"
+                        className="bg-white p-8 rounded-3xl shadow-soft hover:shadow-card transition-all duration-300 group text-center gpu-accelerated will-change-[transform,opacity]"
                     >
-                        <div className="w-16 h-16 mx-auto bg-cream rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-16 h-16 mx-auto bg-cream rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 will-change-transform">
                             <feature.icon className="text-3xl text-primary group-hover:text-secondary transition-colors" />
                         </div>
                         <h3 className="text-xl font-bold mb-3 font-serif">{feature.title}</h3>

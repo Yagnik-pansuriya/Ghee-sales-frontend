@@ -14,7 +14,6 @@ const Wholesale = () => {
         setIsSubmitting(true);
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500));
-        console.log("B2B Form Data:", data);
         setIsSubmitting(false);
         setIsSuccess(true);
         reset();

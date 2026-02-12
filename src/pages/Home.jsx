@@ -4,6 +4,7 @@ import WhyChooseUs from '../components/sections/WhyChooseUs';
 import Certifications from '../components/sections/Certifications';
 import ProductShowcase from '../components/sections/ProductShowcase';
 import ComparisonTool from '../components/sections/ComparisonTool';
+import SelectionGuide from '../components/sections/SelectionGuide';
 import Testimonials from '../components/sections/Testimonials';
 import WholesaleInquiry from '../components/sections/WholesaleInquiry';
 import { Helmet } from 'react-helmet-async';
@@ -16,7 +17,7 @@ import BilonaJourney from '../components/sections/BilonaJourney';
 
 const Home = () => {
     return (
-        <div className="home-page overflow-x-hidden">
+        <div className="home-page overflow-x-hidden relative">
             <Helmet>
                 <title>Farm Begin | Pure A2 Gir Cow Ghee & Raw Honey</title>
                 <meta name="description" content="Discover the purest Bilona Ghee and Wild Forest Honey. Ethically sourced, lab-tested, and 100% organic. Shop now for health and tradition." />
@@ -28,7 +29,9 @@ const Home = () => {
                 <WhyChooseUs />
             </div>
 
-            <BilonaJourney />
+            <div id="bilona-journey">
+                <BilonaJourney />
+            </div>
 
             <div id="products">
                 <ProductShowcase />
@@ -37,7 +40,7 @@ const Home = () => {
             {/* Bundle Builder Promotion */}
             <div className="py-20 bg-primary overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-1/3 h-full bg-secondary/10 skew-x-12 translate-x-1/2" />
-                <div className="container mx-auto px-4 relative z-10">
+                <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-12 bg-white/5 backdrop-blur-sm p-10 md:p-16 rounded-[60px] border border-white/10">
                         <div className="max-w-xl">
                             <div className="flex items-center gap-3 text-secondary font-bold mb-4">
@@ -74,6 +77,8 @@ const Home = () => {
                 <ComparisonTool />
             </div>
 
+            <SelectionGuide />
+
             <div id="certifications">
                 <Certifications />
             </div>
@@ -83,8 +88,6 @@ const Home = () => {
             <div id="wholesale">
                 <WholesaleInquiry />
             </div>
-
-            <BrandStory />
 
             <FAQ />
         </div>

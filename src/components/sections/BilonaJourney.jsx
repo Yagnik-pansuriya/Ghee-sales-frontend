@@ -1,9 +1,22 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import SectionWrapper from '../layout/SectionWrapper';
 import { FiSun, FiAward, FiStar, FiRefreshCw, FiDroplet, FiHeart, FiSettings } from 'react-icons/fi';
+import clsx from 'clsx';
 
 const BilonaJourney = () => {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start center", "end center"]
+    });
+
+    const scaleY = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
     const steps = [
         {
             number: "01",
@@ -12,6 +25,7 @@ const BilonaJourney = () => {
             icon: <FiHeart />,
             color: "bg-green-50",
             textColor: "text-green-700",
+            glow: "shadow-[0_0_30px_rgba(34,197,94,0.3)]",
             detail: "Free Grazing • A2 Protein Only"
         },
         {
@@ -21,6 +35,7 @@ const BilonaJourney = () => {
             icon: <FiSettings />,
             color: "bg-orange-50",
             textColor: "text-orange-700",
+            glow: "shadow-[0_0_30px_rgba(249,115,22,0.3)]",
             detail: "Earthen Chulhas • Low Heat"
         },
         {
@@ -30,6 +45,7 @@ const BilonaJourney = () => {
             icon: <FiDroplet />,
             color: "bg-blue-50",
             textColor: "text-blue-700",
+            glow: "shadow-[0_0_30px_rgba(59,130,246,0.3)]",
             detail: "Overnight Culturing • No Additives"
         },
         {
@@ -39,6 +55,7 @@ const BilonaJourney = () => {
             icon: <FiRefreshCw />,
             color: "bg-amber-50",
             textColor: "text-amber-700",
+            glow: "shadow-[0_0_30px_rgba(245,158,11,0.3)]",
             detail: "Hand Churned • Ancient Method"
         },
         {
@@ -48,106 +65,145 @@ const BilonaJourney = () => {
             icon: <FiSun />,
             color: "bg-yellow-50",
             textColor: "text-yellow-700",
+            glow: "shadow-[0_0_30px_rgba(234,179,8,0.3)]",
             detail: "Golden Granules • High Aroma"
         }
     ];
 
     return (
-        <SectionWrapper className="py-32 bg-white overflow-hidden">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-24">
-                    <motion.span
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className="text-secondary font-bold tracking-[0.3em] uppercase text-sm mb-6 block"
+        <SectionWrapper className="py-40 bg-white overflow-hidden" id="bilona-journey" ref={containerRef}>
+            <div className="max-w-7xl mx-auto px-4">
+                {/* Intro */}
+                <div className="text-center mb-40 relative">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-5 py-2 bg-secondary/10 rounded-full text-secondary text-xs font-bold uppercase tracking-[0.4em] mb-10 border border-secondary/20"
                     >
                         Ancestral Wisdom
-                    </motion.span>
+                    </motion.div>
                     <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-serif font-bold text-primary mb-8 leading-tight"
+                        className="text-5xl md:text-8xl font-serif font-bold text-primary mb-12 tracking-tighter"
                     >
                         The Art of <span className="text-secondary italic">Bilona</span>
                     </motion.h2>
-                    <div className="h-1 w-24 bg-secondary mx-auto mb-8" />
-                    <p className="text-xl text-text-muted max-w-2xl mx-auto font-light leading-relaxed">
-                        Unlike industrial methods, our 5-step Vedic process takes 32 hours and 25 kg of milk to create just one jar of pure Ghee.
+                    <p className="text-2xl text-text-muted max-w-3xl mx-auto font-light leading-relaxed">
+                        A 3,000-year-old Vedic ritual that transforms pure A2 milk into <br className="hidden md:block" />
+                        <span className="text-primary font-bold decoration-secondary decoration-2 underline underline-offset-8">Golden Medicine.</span>
                     </p>
                 </div>
 
                 <div className="relative">
-                    <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-primary/5 -translate-x-1/2" />
+                    {/* The Scrollytelling Line */}
+                    <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-primary/5 -translate-x-1/2 hidden md:block" />
+                    <motion.div
+                        style={{ scaleY }}
+                        className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-secondary origin-top -translate-x-1/2 hidden md:block blur-[1px]"
+                    />
 
-                    <div className="space-y-24 md:space-y-40">
+                    <div className="space-y-40 md:space-y-64">
                         {steps.map((step, idx) => (
-                            <div key={idx} className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-24 ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+                            <div key={idx} className={clsx(
+                                "flex flex-col md:flex-row items-center gap-16 md:gap-32 relative",
+                                idx % 2 !== 0 && "md:flex-row-reverse"
+                            )}>
+                                {/* Text Content */}
                                 <motion.div
-                                    initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                                    initial={{ opacity: 0, x: idx % 2 === 0 ? -100 : 100 }}
                                     whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    className="flex-1 text-center lg:text-left"
+                                    viewport={{ margin: "-100px" }}
+                                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                                    className="flex-1 text-center md:text-left space-y-8 gpu-accelerated"
                                 >
-                                    <div className={`inline-flex items-center gap-3 font-bold uppercase tracking-widest text-sm mb-6 ${step.textColor}`}>
-                                        <span className="w-10 h-10 rounded-full border border-current flex items-center justify-center font-serif text-lg">
+                                    <div className={clsx(
+                                        "inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em]",
+                                        step.textColor
+                                    )}>
+                                        <span className="w-12 h-12 rounded-2xl border-2 border-current flex items-center justify-center font-serif text-xl">
                                             {step.number}
                                         </span>
                                         {step.detail}
                                     </div>
-                                    <h3 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-6">{step.title}</h3>
-                                    <p className="text-lg text-text-muted leading-relaxed mb-8">
+                                    <h3 className="text-4xl md:text-6xl font-serif font-bold text-primary leading-tight">
+                                        {step.title}
+                                    </h3>
+                                    <p className="text-xl text-text-muted leading-relaxed font-light">
                                         {step.desc}
                                     </p>
-                                    <div className="flex items-center justify-center lg:justify-start gap-4">
-                                        <FiStar className="text-secondary" />
-                                        <span className="text-xs font-bold tracking-[0.2em] uppercase opacity-40">Pure Vedic Standard</span>
+                                    <div className="flex items-center justify-center md:justify-start gap-4 pt-4">
+                                        <div className="h-px w-12 bg-secondary/30" />
+                                        <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-secondary">Sacred Process</span>
                                     </div>
                                 </motion.div>
 
-                                <div className="relative z-10">
+                                {/* Center Icon Hub */}
+                                <div className="relative z-10 shrink-0">
                                     <motion.div
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        viewport={{ once: true }}
-                                        className={`w-32 h-32 md:w-48 md:h-48 rounded-full ${step.color} ${step.textColor} shadow-2xl flex items-center justify-center text-5xl md:text-7xl border-8 border-white group relative`}
+                                        initial={{ scale: 0.5, opacity: 0, rotate: -45 }}
+                                        whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
+                                        viewport={{ margin: "-50px" }}
+                                        className={clsx(
+                                            "w-40 h-40 md:w-56 md:h-56 rounded-[50px] flex items-center justify-center text-6xl md:text-8xl border-8 border-white transition-all duration-700 bg-white group relative shadow-2xl overflow-hidden",
+                                            step.textColor
+                                        )}
                                     >
-                                        {step.icon}
-                                        <div className="absolute inset-2 border border-current opacity-20 rounded-full" />
+                                        <div className={clsx("absolute inset-0 opacity-10 transition-opacity group-hover:opacity-20", step.color)} />
+                                        <div className="relative z-10 transition-transform duration-500 group-hover:scale-110">
+                                            {step.icon}
+                                        </div>
+
+                                        {/* Decorative Ring */}
+                                        <div className="absolute inset-4 border-2 border-current opacity-5 rounded-[40px]" />
                                     </motion.div>
 
-                                    <div className={`absolute -top-4 -right-4 w-12 h-12 rounded-full ${step.color} ${step.textColor} border-4 border-white shadow-lg flex items-center justify-center font-bold text-sm`}>
-                                        {step.number}
-                                    </div>
+                                    {/* Scroll Glow Pulse */}
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        className={clsx(
+                                            "absolute inset-0 -z-10 blur-3xl opacity-0 transition-opacity duration-1000",
+                                            step.glow,
+                                            "group-hover:opacity-100"
+                                        )}
+                                    />
                                 </div>
 
-                                <div className="flex-1 hidden lg:block" />
+                                {/* Placeholder for Symmetry */}
+                                <div className="flex-1 hidden md:block" />
                             </div>
                         ))}
                     </div>
                 </div>
 
+                {/* Conclusion Card */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    className="mt-40 bg-cream p-12 md:p-24 rounded-[60px] text-center border-2 border-primary/5"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="mt-64 bg-primary p-16 md:p-32 rounded-[100px] text-center text-white relative overflow-hidden shadow-glow-primary"
                 >
-                    <FiAward className="text-6xl text-secondary mx-auto mb-8" />
-                    <h3 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-8">Slow Food for a Fast Life</h3>
-                    <p className="text-xl text-text-muted max-w-2xl mx-auto leading-relaxed italic mb-12">
-                        "Real health cannot be mass-produced. It requires patience, tradition, and respect for nature's natural rhythm."
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 -mr-48 -mt-48 rounded-full blur-[120px]" />
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 -ml-48 -mb-48 rounded-full blur-[120px]" />
+
+                    <FiAward className="text-6xl text-secondary mx-auto mb-12 animate-pulse-subtle" />
+                    <h3 className="text-4xl md:text-7xl font-serif font-bold mb-12 tracking-tight">Slow Food for a <span className="text-secondary italic">Conscious Life</span></h3>
+                    <p className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto leading-relaxed font-light italic mb-20">
+                        "In an era of mass-production, we choose the ritual. 32 hours of patience, 25 liters of devotion, and 0 compromises."
                     </p>
-                    <div className="flex flex-wrap justify-center gap-12">
-                        <div className="text-center">
-                            <div className="text-3xl font-bold text-primary mb-2">32 hrs</div>
-                            <div className="text-xs uppercase font-bold tracking-widest text-secondary">Crafting Time</div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-4xl mx-auto pt-16 border-t border-white/10">
+                        <div className="space-y-4">
+                            <div className="text-5xl font-serif font-bold text-secondary">32 hrs</div>
+                            <div className="text-xs uppercase font-bold tracking-[0.3em] text-white/40">Vedic Crafting</div>
                         </div>
-                        <div className="text-center">
-                            <div className="text-3xl font-bold text-primary mb-2">25 L</div>
-                            <div className="text-xs uppercase font-bold tracking-widest text-secondary">A2 Milk / Jar</div>
+                        <div className="space-y-4">
+                            <div className="text-5xl font-serif font-bold text-secondary">25 L</div>
+                            <div className="text-xs uppercase font-bold tracking-[0.3em] text-white/40">A2 Milk / Jar</div>
                         </div>
-                        <div className="text-center">
-                            <div className="text-3xl font-bold text-primary mb-2">0</div>
-                            <div className="text-xs uppercase font-bold tracking-widest text-secondary">Chemicals</div>
+                        <div className="space-y-4">
+                            <div className="text-5xl font-serif font-bold text-secondary">Zero</div>
+                            <div className="text-xs uppercase font-bold tracking-[0.3em] text-white/40">Industrialization</div>
                         </div>
                     </div>
                 </motion.div>

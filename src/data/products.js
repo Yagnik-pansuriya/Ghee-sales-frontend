@@ -5,9 +5,16 @@ export const products = [
         price: "1,499",
         category: "Ghee",
         image: "https://satvikghee.com/cdn/shop/files/Pure_Satvik_A2_Gir_Cow_Ghee.jpg?v=1770036068",
+        gallery: [
+            "https://satvikghee.com/cdn/shop/files/Pure_Satvik_A2_Gir_Cow_Ghee.jpg?v=1770036068",
+            "https://i.ibb.co/vzYpD7G/ghee-texture.jpg",
+            "https://i.ibb.co/m0f2p5S/bilona-process.jpg"
+        ],
         tag: "Bestseller",
         desc: "Traditional Bilona method hand-churned from A2 curd of grass-fed Gir cows.",
-        benefits: ["Rich in Omega-3", "High Smoke Point", "Easy Digestion"]
+        longDesc: "Our A2 Gir Cow Ghee is crafted using the ancient Bilona method. We start with pure A2 milk from free-grazing Gir cows. The milk is boiled over firewood, cultured into curd, and then hand-churned bi-directionally to separate the makkhan. This butter is then slow-clarified to produce golden, granular ghee with deep medicinal properties.",
+        benefits: ["Rich in Omega-3", "High Smoke Point", "Easy Digestion", "Vedic Bilona Process"],
+        certificates: ["FSSAI Certified", "Lab Tested", "ISO 9001", "Cruelty Free"]
     },
     {
         id: 2,
@@ -15,9 +22,17 @@ export const products = [
         price: "850",
         category: "Honey",
         image: "https://foodcare.in/cdn/shop/files/wild_forest_honey.jpg?v=1739178912&width=713",
+        gallery: [
+            "https://images.unsplash.com/photo-1587049352851-8d4e8913d179?q=80&w=1000", // Honey Jar
+            "https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=1000", // Honey Spoon
+            "https://images.unsplash.com/photo-1473973266408-ed4e27abdd75?q=80&w=1000", // Beekeeping
+            "https://images.unsplash.com/photo-1558583055-d7ac00b1adca?q=80&w=1000"  // Honeycomb
+        ],
         tag: "Pure",
         desc: "Unprocessed, multi-floral honey collected from deep forest hives.",
-        benefits: ["Natural Immunity", "Rich in Antioxidants", "No Added Sugar"]
+        longDesc: "Our Raw Forest Honey is sourced from the untouched hearts of the wild forest. It is unfiltered, unpasteurized, and multi-floral, containing the essence of thousands of medicinal flowers. We harvest sustainably to ensure the bees thrive and the honey retains all its natural enzymes, pollen, and antioxidants.",
+        benefits: ["Natural Immunity", "Rich in Antioxidants", "No Added Sugar", "Unfiltered & Raw"],
+        certificates: ["FSSAI Certified", "Lab Tested", "Organic Certified", "Sustainable Harvest"]
     },
     {
         id: 3,

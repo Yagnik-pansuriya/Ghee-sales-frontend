@@ -31,7 +31,7 @@ const OrderSuccess = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-white rounded-[60px] shadow-2xl border border-secondary/10 overflow-hidden"
+                        className="bg-white rounded-[60px] shadow-2xl border border-secondary/10 overflow-hidden relative"
                     >
                         {/* Hero Banner */}
                         <div className="bg-primary p-12 md:p-20 text-center text-white relative">

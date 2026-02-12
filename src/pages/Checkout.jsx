@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiChevronRight, FiCheckCircle, FiTruck, FiCreditCard, FiPackage, FiArrowLeft, FiShoppingBag } from 'react-icons/fi';
+import { FiChevronRight, FiCheckCircle, FiTruck, FiCreditCard, FiPackage, FiArrowLeft, FiShoppingBag, FiStar } from 'react-icons/fi';
 import SectionWrapper from '../components/layout/SectionWrapper';
 import Button from '../components/common/Button';
 import { clearCart } from '../redux/cartSlice';
@@ -262,7 +262,7 @@ const Checkout = () => {
                                 <FiPackage className="text-secondary" /> Order Summary
                             </h3>
 
-                            <div className="space-y-6 mb-8 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                            <div className="space-y-6 mb-8 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar relative">
                                 {items.map((item) => (
                                     <div key={item.id} className="flex gap-4">
                                         <div className="w-16 h-16 bg-white rounded-xl border border-border overflow-hidden shrink-0">
@@ -293,6 +293,10 @@ const Checkout = () => {
                                 <div className="flex justify-between pt-4 border-t border-primary/10">
                                     <span className="text-xl font-serif font-bold text-primary">Total</span>
                                     <span className="text-3xl font-serif font-bold text-secondary">₹{finalTotal.toLocaleString('en-IN')}</span>
+                                </div>
+                                <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-secondary bg-secondary/10 p-3 rounded-xl border border-secondary/10">
+                                    <FiStar size={12} className="fill-secondary" />
+                                    <span>Vedic Gold: +{Math.floor(totalAmount / 20)} Points</span>
                                 </div>
                             </div>
 

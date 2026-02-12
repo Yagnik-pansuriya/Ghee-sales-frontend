@@ -24,7 +24,7 @@ const Certifications = () => {
             <div className="flex flex-col md:flex-row items-center justify-between gap-10">
                 <div className="max-w-xl">
                     <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">Certified Goodness</span>
-                    <h2 className="text-3xl md:text-4xl font-serif mb-4 text-primary">Lab Tested & Certified</h2>
+                    <h2 className="text-3xl md:text-4xl font-serif mb-4 text-primary leading-tight">Lab Tested & Certified</h2>
                     <p className="text-text-muted text-lg mb-8">
                         Our commitment to quality is backed by rigorous testing and government certifications.
                         We ensure every jar meets the highest standards of safety and purity.
@@ -49,7 +49,7 @@ const Certifications = () => {
                     <img
                         src="/images/certs/lab-test.jpg"
                         alt="Lab Testing"
-                        className="relative z-10 rounded-2xl shadow-card max-w-sm w-full object-cover aspect-square"
+                        className="relative z-10 rounded-2xl shadow-card max-w-[280px] sm:max-w-sm w-full object-cover aspect-square mx-auto"
                     />
                 </div>
             </div>

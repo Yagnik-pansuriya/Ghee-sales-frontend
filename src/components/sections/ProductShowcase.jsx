@@ -77,7 +77,10 @@ const ProductShowcase = () => {
                             <div className="flex items-center justify-center sm:justify-between px-2 sm:px-0">
                                 <span className="text-xl font-bold text-primary-dark">₹{product.price}</span>
                                 <button
-                                    onClick={() => dispatch(addItem(product))}
+                                    onClick={() => {
+                                        dispatch(addItem(product));
+                                        window.location.href = '/checkout';
+                                    }}
                                     className="hidden sm:flex text-sm font-bold text-primary underline decoration-secondary decoration-2 underline-offset-4 hover:text-secondary transition-colors"
                                 >
                                     Buy Now

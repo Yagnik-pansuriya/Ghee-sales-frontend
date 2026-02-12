@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Button from '../common/Button';
 
 const Hero = () => {
-    const { scrollY } = useScroll();
-    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+    const containerRef = React.useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"]
+    });
+    const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+    const y2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
     // Video background fallback to image if needed
     const heroImage = "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1920&auto=format&fit=crop";
 
     return (
-        <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+        <section ref={containerRef} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
             {/* Parallax Background */}
             <motion.div
                 style={{ y: y1 }}
-                className="absolute inset-0 z-0"
+                className="absolute inset-0 z-0 will-change-transform"
             >
                 <div className="relative w-full h-[120%] -top-[10%]">
                     <img
@@ -47,7 +52,7 @@ const Hero = () => {
                         100% Organic • Ethical • Pure
                     </span>
 
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-xl">
+                    <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-xl">
                         Nature’s Golden <br className="hidden sm:block" />
                         <span className="text-stone-100 italic">Liquid Gold</span>
                     </h1>
@@ -57,45 +62,14 @@ const Hero = () => {
                         Sourced from free-grazing cows and pristine forests.
                     </p>
 
-                    <motion.div
-                        className="flex flex-col sm:flex-row items-center justify-center gap-5"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
-                    >
-                        <Button size="lg" className="w-full sm:w-auto min-w-[180px] shadow-glow">
-                            Shop Collection
-                        </Button>
-                        <Button size="lg" variant="outline" className="w-full sm:w-auto min-w-[180px] backdrop-blur-sm">
-                            Our Story
-                        </Button>
-                    </motion.div>
                 </motion.div>
             </div>
 
             {/* Floating Elements / Decor */}
             <motion.div
                 style={{ y: y2 }}
-                className="absolute -right-20 top-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-[100px] pointer-events-none"
+                className="absolute -right-20 top-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-[100px] pointer-events-none will-change-transform"
             />
-
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white flex flex-col items-center gap-3 cursor-pointer"
-                onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-            >
-                <span className="text-[10px] tracking-[0.3em] uppercase opacity-80 hover:text-secondary transition-colors">Explore</span>
-                <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden rounded-full">
-                    <motion.div
-                        animate={{ y: [-64, 64] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-secondary to-transparent"
-                    />
-                </div>
-            </motion.div>
         </section>
     );
 };
